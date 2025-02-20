@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="modulo_printer_change.list">
+      <field name="name">modulo_printer_change list</field>
+      <field name="model">modulo_printer_change.modulo_printer_change</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="modulo_printer_change.action_window">
+      <field name="name">modulo_printer_change window</field>
+      <field name="res_model">modulo_printer_change.modulo_printer_change</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="modulo_printer_change.action_server">
+      <field name="name">modulo_printer_change server</field>
+      <field name="model_id" ref="model_modulo_printer_change_modulo_printer_change"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="modulo_printer_change" id="modulo_printer_change.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="modulo_printer_change.menu_1" parent="modulo_printer_change.menu_root"/>
+    <menuitem name="Menu 2" id="modulo_printer_change.menu_2" parent="modulo_printer_change.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="modulo_printer_change.menu_1_list" parent="modulo_printer_change.menu_1"
+              action="modulo_printer_change.action_window"/>
+    <menuitem name="Server to list" id="modulo_printer_change" parent="modulo_printer_change.menu_2"
+              action="modulo_printer_change.action_server"/>
+-->
+  </data>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version = "1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_delivery_document_custom" inherit_id="purchase.report_purchaseorder_document">
+
+        <xpath expr="//div[@class='mt-4']" position="replace">
+            <div class="mt-4">
+                <h2 t-if="o.state in ['draft', 'sent', 'to approve']">Request for Quotation <span t-field="o.name"/></h2>
+                <h2 t-if="o.state in ['purchase', 'done']">Purchase Order <span t-field="o.name"/></h2>
+                <h2 t-if="o.state == 'cancel'">Cancelled Purchase Order <span t-field="o.name"/></h2>
+            </div>
+        </xpath>
+
+    </template>
+</odoo>

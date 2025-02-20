@@ -1,0 +1,10 @@
+<?xml version = "1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_document_custom" inherit_id="account.report_invoice_document">
+
+        <xpath expr="//div[hasclass('mb-3')]//p[@name='payment_communication']" position="attributes">
+            <attribute name="t-if">1!=1</attribute>
+        </xpath>
+
+    </template>
+</odoo>

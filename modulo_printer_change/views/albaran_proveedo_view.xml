@@ -1,0 +1,12 @@
+<odoo>
+    <record id="stock_picking_prov_form_view_custom" model="ir.ui.view">
+        <field name="name">stock.picking.prov.form.view.custom</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='owner_id']" position="before">
+                <field name="prov_albaran"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
