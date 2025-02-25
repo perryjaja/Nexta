@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record model="ir.ui.view" id="pnt_product_template_cost_form_view">
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='standard_price']" position="attributes">
+                    <attribute name="groups">sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager</attribute>
+                </xpath>
+                <xpath expr="//field[@name='standard_price']" position="attributes">
+                    <attribute name="groups">sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    <!-- FORM Product Template -->
+    <record model="ir.ui.view" id="product_template_only_form_view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="priority" eval="9999"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='general_information']//field[@name='default_code']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='general_information']//field[@name='categ_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- Ocultamos el nombre original-->
+
+            <xpath expr="//label[@for='name']" position="replace"/>
+
+            <xpath expr="//field[@name='name']" position="replace"/>
+
+
+            <xpath expr="//field[@name='sale_ok']" position="before">
+                <div style="display:flex">
+                    <div class="col-xs-4">
+                        <label class="oe_edit_only" for="default_code" string="Default Code"/>
+                        <h1>
+                            <field name="default_code" required="1"/>
+                            <span style="color:transparent;">..</span>
+                        </h1>
+                    </div>
+                    <div class="col-xs-8">
+                        <label class="oe_edit_only" for="name" string="Product Name"/>
+                        <h1>
+                            <field name="name" required="1" placeholder="Product Name"/>
+                        </h1>
+                    </div>
+                </div>
+                <group>
+                    <field name="pnt_description_intern"/>
+                    <field name="pnt_detail"/>
+                    <field name="pnt_medidas"/>
+                    <field name="pnt_ubicacion" string="Ubicación"/>
+                </group>
+                <group>
+                    <strong>
+                        <label for="categ_id" style="font-weight:900;font-size:16px;">Product Category</label>
+                        <field name="categ_id"/>
+                    </strong>
+                </group>
+            </xpath>
+
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="pnt_peso_obligatorio"/>
+                <field name="pnt_peso_neto"
+                       attrs="{'required': [('pnt_peso_obligatorio', '=', True)]}"/>
+                <field name="pnt_quilataje"/>
+            </xpath>
+
+            <xpath expr="//field[@name='barcode']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//label[@for='standard_price']" position="replace"/>
+            <xpath expr="//div[@name='standard_price_uom']" position="replace"/>
+            <!-- Pestaña de Ventas -->
+            <field name="list_price" position="after">
+                <field name="pnt_precio_obligatorio" invisible="1"/>
+                <field name="pnt_list_price"
+                       attrs="{'required': [('pnt_precio_obligatorio', '=', True)]}"/>
+            </field>
+            <xpath expr="//group[@name='sale']" position="before">
+                <group colspan="2">
+                    <group>
+                        <field name="pnt_sale_unit" readonly="1" force_save="1"
+                               options="{'no_create': True, 'no_open': True}"/>
+                        <field name="pnt_escandallo" force_save="1"/>
+                        <field name="pnt_escandallo_manual"/>
+                    </group>
+                    <group string="Hechura Venta">
+                        <field name="pnt_hechura_venta"/>
+                    </group>
+                </group>
+            </xpath>
+
+            <!-- Pestaña de Compras -->
+            <xpath expr="//group[@name='vendors']" position="before">
+                <group colspan="2">
+                    <group>
+                        <label for="standard_price" groups="base.group_user"
+                               attrs="{'invisible': [('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False)]}"/>
+                        <div name="standard_price_uom" groups="base.group_user"
+                             attrs="{'invisible': [('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False)]}">
+                            <field name="standard_price" widget="monetary"
+                                   options="{'currency_field': 'cost_currency_id'}"/>
+                        </div>
+                        <field name="pnt_merma" invisible="1"/>
+                    </group>
+                    <group string="Hechura Compra" invisible="1">
+                        <field name="pnt_hechura_compra"/>
+                        <field name="pnt_purchase_unit"/>
+                    </group>
+                </group>
+                <button type="object" name="btn_seller_price" string="Update Cost"/>
+            </xpath>
+
+            <!-- Pestaña caracteristicas-->
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page name="characteristics" string="Characteristics">
+                    <group colspan="2">
+                        <field name="barcode"/>
+                    </group>
+                    <group colspan="2">
+                        <field name="pnt_tipo_metal" options="{'no_create': True, 'no_open': True}"></field>
+                    </group>
+                    <group colspan="2">
+                        <group>
+                            <field name="pnt_categ_parent_id" invisible="1"/>
+
+                            <field name="pnt_design"
+                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"
+                                   options="{'no_create': True, 'no_open': True}"/>
+                            <field name="pnt_subdesign"
+                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"
+                                   options="{'no_create': True, 'no_open': True}"/>
+                            <field name="pnt_format"
+                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"
+                                   options="{'no_create': True, 'no_open': True}"/>
+
+                        </group>
+                        <group>
+                            <field name="pnt_metal" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="pnt_stones" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="pnt_density"
+                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"
+                                   options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- TREE Product Template -->
+    <record model="ir.ui.view" id="product_template_tree_view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="priority" eval="9999"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="pnt_description_intern"/>
+                <field name="pnt_detail"/>
+                <field name="pnt_ubicacion" string="Ubicación"/>
+            </xpath>
+            <field name="standard_price" position="replace">
+                <field name="standard_price"
+                       groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- KANBAN Product Template -->
+    <record model="ir.ui.view" id="product_template_kanban_view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_kanban_view"/>
+        <field name="priority" eval="9999"/>
+        <field name="arch" type="xml">
+            <xpath expr="//small[@t-if='record.default_code.value']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="before">
+                <strong t-if="record.default_code.value">[<field name="default_code"/>]
+                </strong>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- TREE Product Supplier Info -->
+    <record model="ir.ui.view" id="product_supplierinfo_tree_view">
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
+        <field name="priority" eval="9999"/>
+        <field name="arch" type="xml">
+            <field name="discount" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="date_start" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="date_end" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <xpath expr="//field[@name='date_end']" position="after">
+                <field name="pnt_merma"/>
+                <field name="pnt_hechura_compra"/>
+                <field name="pnt_purchase_unit"/>
+                <field name="pnt_discount_hechura_compra"/>
+                <field name="pnt_activo"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- FORM Product Supplier Info -->
+    <record model="ir.ui.view" id="product_supplierinfo_form_view">
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+        <field name="priority" eval="9999"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="pnt_activo"/>
+            </xpath>
+            <xpath expr="//form" position="inside">
+                <group string="Hechura Compra">
+                    <group>
+                        <field name="pnt_hechura_compra"/>
+                        <field name="pnt_purchase_unit" required="1"/>
+                        <field name="pnt_discount_hechura_compra"/>
+                    </group>
+                    <group>
+                        <field name="pnt_merma"/>
+                    </group>
+                </group>
+
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_template_only_form_view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='toggle_active']" position="replace">
+                <button name="toggle_active" type="object" class="oe_stat_button"
+                        icon="fa-archive" groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager">
+                    <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                </button>
+            </xpath>
+            <xpath expr="//notebook/page[@name='sales']" position="attributes">
+                <attribute name="groups">sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[@name='purchase']" position="attributes">
+                <attribute name="groups">sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_template_only_comercial_form_view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="purchase_last_price_info.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="last_purchase_price" position="replace">
+                <field name="last_purchase_price"
+                       groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_template_only_res_comercial_form_view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="stock_available_unreserved.view_stock_product_template_tree"/>
+        <field name="arch" type="xml">
+            <field name="qty_available_not_res" position="replace">
+                <field name="qty_available_not_res"
+                       groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_template_only_stock_comercial_form_view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="stock.view_stock_product_template_tree"/>
+        <field name="arch" type="xml">
+            <field name="qty_available" position="replace">
+                <field name="qty_available"
+                       groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"/>
+            </field>
+            <field name="virtual_available" position="replace">
+                <field name="virtual_available"
+                       groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_template_block_messages_form_view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="stock.product_template_form_view_procurement_button"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='%(stock.action_product_replenish)d']" position="replace">
+                <button string="Reabastecer" type="object"
+                        name="pnt_action_product_replenish"
+                        context="{'default_product_tmpl_id': id}"
+                        groups="stock.group_stock_user"
+                        attrs="{'invisible': [('type', '!=', 'product')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

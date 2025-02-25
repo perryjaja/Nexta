@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- FORM Product Product -->
+    <record model="ir.ui.view" id="product_normal_form_view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="priority" eval="9999"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button type="object" name="btn_regularize_category"
+                        groups="sales_team.group_sale_manager" string="Regularizar Ud. Venta"/>
+            </xpath>
+            <xpath expr="//page[@name='general_information']//field[@name='default_code']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='general_information']//field[@name='categ_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- Ocultamos el nombre original-->
+
+            <xpath expr="//label[@for='name']" position="replace"/>
+
+            <xpath expr="//field[@name='name']" position="replace"/>
+
+
+            <xpath expr="//field[@name='sale_ok']" position="before">
+                <div style="display:flex">
+                    <div class="col-xs-4">
+                        <label class="oe_edit_only" for="default_code" string="Default Code"/>
+                        <h1>
+                            <field name="default_code" required="1"/>
+                            <span style="color:transparent;">..</span>
+                        </h1>
+                    </div>
+                    <div class="col-xs-8">
+                        <label class="oe_edit_only" for="name" string="Product Name"/>
+                        <h1>
+                            <field name="name" required="1" placeholder="Product Name"/>
+                        </h1>
+                    </div>
+                </div>
+                <group>
+                    <field name="pnt_description_intern"/>
+                    <field name="pnt_detail"/>
+                    <field name="pnt_medidas"/>
+                    <field name="pnt_ubicacion" string="Ubicación"/>
+                </group>
+                <group>
+                    <strong>
+                        <label for="categ_id" style="font-weight:900;font-size:16px;">Product Category</label>
+                        <field name="categ_id"/>
+                    </strong>
+                </group>
+            </xpath>
+
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="pnt_peso_obligatorio"/>
+                <field name="pnt_peso_neto"
+                       attrs="{'required': [('pnt_peso_obligatorio', '=', True)]}"/>
+                <field name="pnt_quilataje"/>
+            </xpath>
+
+            <xpath expr="//field[@name='barcode']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//label[@for='standard_price']" position="replace"/>
+            <xpath expr="//div[@name='standard_price_uom']" position="replace"/>
+            <!-- Pestaña de Ventas -->
+            <field name="lst_price" position="after">
+                <field name="pnt_precio_obligatorio" invisible="1"/>
+                <field name="pnt_list_price"
+                       attrs="{'required': [('pnt_precio_obligatorio', '=', True)]}"/>
+            </field>
+            <xpath expr="//group[@name='sale']" position="before">
+                <group colspan="2">
+                    <group>
+                        <field name="pnt_sale_unit" readonly="1" force_save="1"
+                               options="{'no_create': True, 'no_open': True}"/>
+                        <field name="pnt_escandallo_manual"/>
+                        <field name="pnt_escandallo" force_save="1"
+                               attrs="{'readonly': [('pnt_escandallo_manual', '=', False)]}"/>
+                    </group>
+                    <group string="Hechura Venta">
+                        <field name="pnt_hechura_venta"/>
+                    </group>
+                </group>
+            </xpath>
+
+            <xpath expr="//field[@name='seller_ids']" position="attributes">
+                <attribute name="context">{"default_product_id":active_id}</attribute>
+            </xpath>
+
+            <!-- Pestaña de Compras NDS-->
+<!--            <xpath expr="//group[@name='vendors']" position="before">-->
+<!--                <group colspan="2">-->
+<!--                    <group>-->
+<!--                        <label for="standard_price" groups="base.group_user"-->
+<!--                               attrs="{'invisible': [('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False)]}"/>-->
+<!--                        <div name="standard_price_uom" groups="base.group_user"-->
+<!--                             attrs="{'invisible': [('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False)]}">-->
+<!--                            <field name="standard_price" widget="monetary"-->
+<!--                                   options="{'currency_field': 'cost_currency_id'}"/>-->
+<!--                        </div>-->
+<!--                        <field name="pnt_merma" invisible="1"/>-->
+<!--                    </group>-->
+<!--                    <group string="Hechura Compra" invisible="1">-->
+<!--                        <field name="pnt_hechura_compra"/>-->
+<!--                        <field name="pnt_purchase_unit"/>-->
+<!--                    </group>-->
+<!--                </group>-->
+<!--                <button type="object" name="btn_seller_price" string="Update Cost"/>-->
+<!--            </xpath>-->
+
+            <!-- Pestaña caracteristicas-->
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page name="characteristics" string="Characteristics">
+                    <group colspan="2">
+                        <field name="barcode"/>
+                    </group>
+                    <group colspan="2">
+                        <field name="pnt_tipo_metal" required="1"
+                               options="{'no_create': True, 'no_open': True}"/>
+                    </group>
+                    <group colspan="2">
+                        <group>
+                            <field name="pnt_categ_parent_id" invisible="1"/>
+
+                            <field name="pnt_design"
+                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"
+                                   options="{'no_create': True, 'no_open': True}"/>
+                            <field name="pnt_subdesign"
+                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"
+                                   options="{'no_create': True, 'no_open': True}"/>
+                            <field name="pnt_format"
+                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"
+                                   options="{'no_create': True, 'no_open': True}"/>
+
+                        </group>
+                        <group>
+                            <field name="pnt_metal" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="pnt_stones" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="pnt_density"
+                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"
+                                   options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- TREE Product Template -->
+    <record model="ir.ui.view" id="product_product_tree_view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="priority" eval="9999"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="pnt_description_intern"/>
+                <field name="pnt_detail"/>
+                <field name="pnt_ubicacion" string="Ubicación"/>
+            </xpath>
+            <field name="standard_price" position="replace">
+                <field name="standard_price"
+                       groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- KANBAN Product Template -->
+    <record model="ir.ui.view" id="product_kanban_view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_kanban_view"/>
+        <field name="priority" eval="9999"/>
+        <field name="arch" type="xml">
+            <!--            <xpath expr="//small[@t-if='record.default_code.value']" position="attributes">-->
+            <!--                <attribute name="invisible">1</attribute>-->
+            <!--            </xpath>-->
+            <xpath expr="//field[@name='name']" position="before">
+                <strong t-if="record.default_code.value">[<field name="default_code"/>]
+                </strong>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    Cambiamos la accion para que salga primero el kanban -->
+    <record id="product.product_normal_action_sell" model="ir.actions.act_window">
+        <field name="name">Product Variants</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">kanban,tree,form,activity</field>
+        <field name="view_type">form</field>
+        <field name="context">{"search_default_filter_to_sell":1}</field>
+        <field name="view_id" ref="product.product_kanban_view"/>
+        <field name="search_view_id" ref="product.product_search_form_view"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new product variant
+            </p>
+            <p>
+                You must define a product for everything you sell, whether it's a physical product,
+                a consumable or a service you offer to customers.
+                The product form contains information to simplify the sale process:
+                price, notes in the quotation, accounting data, procurement methods, etc.
+            </p>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_product_only_comercial_form_view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="purchase_last_price_info.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="last_purchase_price" position="replace">
+                <field name="last_purchase_price"
+                       groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_product_only_res_comercial_form_view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="stock_available_unreserved.view_stock_product_tree"/>
+        <field name="arch" type="xml">
+            <field name="qty_available_not_res" position="replace">
+                <field name="qty_available_not_res"
+                       groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_product_only_stock_comercial_form_view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="stock.view_stock_product_tree"/>
+        <field name="arch" type="xml">
+            <field name="qty_available" position="replace">
+                <field name="qty_available"
+                       groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"/>
+            </field>
+            <field name="virtual_available" position="replace">
+                <field name="virtual_available"
+                       groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="product_product_view_form_easy_inherit_stock" model="ir.ui.view">
+        <field name="name">pnt.product.view.form.easy.inherit.stock</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="stock.product_product_view_form_easy_inherit_stock"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='%(stock.action_product_replenish)d']" position="replace">
+                <button string="Reabastecer" type="object"
+                        name="pnt_action_product_replenish"
+                        context="{'default_product_id': id}"
+                        groups="stock.group_stock_user"
+                        attrs="{'invisible': [('type', '!=', 'product')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_form_view_procurement_button_pnt" model="ir.ui.view">
+        <field name="name">pnt.product.procurement.button.stock</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="stock.product_form_view_procurement_button"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='%(stock.action_product_replenish)d']" position="replace">
+                <button string="Reabastecer" type="object"
+                        name="pnt_action_product_replenish"
+                        context="{'default_product_id': id}"
+                        groups="stock.group_stock_user"
+                        attrs="{'invisible': [('type', '!=', 'product')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
