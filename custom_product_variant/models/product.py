@@ -36,34 +36,24 @@ class ProductTemplate(models.Model):
         string='Quilataje',
         digits=(12, 2)
     )
-    pnt_tipo_metal = fields.Many2one(
-        string='Metal Type',
-        comodel_name='pnt.type.metal'
-    )
-    pnt_metal = fields.Many2one(
-        string='Metal',
-        comodel_name='pnt.metal'
-    )
-    pnt_design = fields.Many2one(
-        string='Design',
-        comodel_name='pnt.design'
-    )
-    pnt_subdesign = fields.Many2one(
-        string='Subdesign',
-        comodel_name='pnt.subdesign'
-    )
-    pnt_format = fields.Many2one(
-        string='Format',
-        comodel_name='pnt.format'
-    )
-    pnt_stones = fields.Many2one(
-        string='Stones',
-        comodel_name='pnt.stones'
-    )
-    pnt_density = fields.Many2one(
-        string='Density',
-        comodel_name='pnt.density'
-    )
+
+    # pnt_design = fields.Many2one(
+    #     string='Design',
+    #     comodel_name='pnt.design'
+    # )
+    # pnt_subdesign = fields.Many2one(
+    #     string='Subdesign',
+    #     comodel_name='pnt.subdesign'
+    # )
+    # pnt_format = fields.Many2one(
+    #     string='Format',
+    #     comodel_name='pnt.format'
+    # )
+    #
+    # pnt_density = fields.Many2one(
+    #     string='Density',
+    #     comodel_name='pnt.density'
+    # )
     pnt_sale_unit = fields.Selection(
         string='Sale Unit',
         selection=[
@@ -147,27 +137,26 @@ class ProductTemplate(models.Model):
             self.pnt_escandallo = self.categ_id.pnt_escandallo
         self.pnt_precio_obligatorio = self.pnt_precio_obligatorio
 
-    @api.depends('pnt_merma', 'pnt_peso_neto', 'pnt_tipo_metal',
-                 'pnt_hechura_compra', 'pnt_escandallo', 'pnt_purchase_unit', 'categ_id')
-    def _compute_pnt_hechura_venta(self):
-        for record in self:
-            # if not record.categ_id.pnt_no_compute_sale_price:
-            if record.categ_id.name == '2' or record.categ_id.parent_id.name == '2':
-                base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
-                base_metal = base_metal[0].pnt_base_metal if base_metal else 0
-
-                if record.pnt_peso_neto != 0 and record.pnt_purchase_unit == 'piece':
-                    hechura = (((((base_metal + base_metal * (
-                            record.pnt_merma / 100)) * record.pnt_peso_neto)
-                                                  + record.pnt_hechura_compra) / record.pnt_peso_neto)
-                                                * record.pnt_escandallo) - base_metal
-                    record.pnt_hechura_venta = self.compute_redondeo(hechura)
-
-                if record.pnt_purchase_unit == 'weight':
-                    hechura = ((base_metal + (base_metal *
-                                                               record.pnt_merma / 100) + record.pnt_hechura_compra)
-                                                * record.pnt_escandallo) - base_metal
-                    record.pnt_hechura_venta = self.compute_redondeo(hechura)
+    # @api.depends('pnt_merma', 'pnt_peso_neto',
+    #              'pnt_hechura_compra', 'pnt_escandallo', 'pnt_purchase_unit', 'categ_id')
+    # def _compute_pnt_hechura_venta(self):
+    #     for record in self:
+    #         if record.categ_id.name == '2' or record.categ_id.parent_id.name == '2':
+    #             base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
+    #             base_metal = base_metal[0].pnt_base_metal if base_metal else 0
+    #
+    #             if record.pnt_peso_neto != 0 and record.pnt_purchase_unit == 'piece':
+    #                 hechura = (((((base_metal + base_metal * (
+    #                         record.pnt_merma / 100)) * record.pnt_peso_neto)
+    #                                               + record.pnt_hechura_compra) / record.pnt_peso_neto)
+    #                                             * record.pnt_escandallo) - base_metal
+    #                 record.pnt_hechura_venta = self.compute_redondeo(hechura)
+    #
+    #             if record.pnt_purchase_unit == 'weight':
+    #                 hechura = ((base_metal + (base_metal *
+    #                                                            record.pnt_merma / 100) + record.pnt_hechura_compra)
+    #                                             * record.pnt_escandallo) - base_metal
+    #                 record.pnt_hechura_venta = self.compute_redondeo(hechura)
 
     def get_categ_parent(self, categ):
         categ_object = self.env['product.category']
@@ -195,54 +184,54 @@ class ProductTemplate(models.Model):
                 record.list_price = self.compute_list_price_4(record)
 
 
-    def compute_list_price_1(self, record):
-        precio_venta = 0
-        base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
-        base_metal = base_metal[0].pnt_base_metal if base_metal else 0
+    # def compute_list_price_1(self, record):
+    #     precio_venta = 0
+    #     base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
+    #     base_metal = base_metal[0].pnt_base_metal if base_metal else 0
+    #
+    #     if record.pnt_purchase_unit == 'piece':
+    #         precio_venta = (((base_metal + base_metal * (record.pnt_merma / 100)) * record.pnt_peso_neto)
+    #                         + record.pnt_hechura_compra) * record.pnt_escandallo
+    #
+    #     if record.pnt_purchase_unit == 'weight':
+    #         precio_venta = (((base_metal + (base_metal * record.pnt_merma) / 100) + record.pnt_hechura_compra) *
+    #                         record.pnt_peso_neto) * record.pnt_escandallo
+    #
+    #     precio_venta = self.compute_redondeo(precio_venta)
+    #
+    #     return precio_venta
 
-        if record.pnt_purchase_unit == 'piece':
-            precio_venta = (((base_metal + base_metal * (record.pnt_merma / 100)) * record.pnt_peso_neto)
-                            + record.pnt_hechura_compra) * record.pnt_escandallo
+    # def compute_list_price_2(self, record):
+    #     precio_venta = 0
+    #     base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
+    #     base_metal = base_metal[0].pnt_base_metal if base_metal else 0
+    #
+    #     if record.pnt_purchase_unit == 'weight':
+    #         precio_venta = record.pnt_hechura_venta + base_metal
+    #
+    #     if record.pnt_purchase_unit == 'piece':
+    #         precio_venta = record.pnt_hechura_venta + base_metal
+    #
+    #     precio_venta = self.compute_redondeo(precio_venta)
+    #
+    #     return precio_venta
 
-        if record.pnt_purchase_unit == 'weight':
-            precio_venta = (((base_metal + (base_metal * record.pnt_merma) / 100) + record.pnt_hechura_compra) *
-                            record.pnt_peso_neto) * record.pnt_escandallo
-
-        precio_venta = self.compute_redondeo(precio_venta)
-
-        return precio_venta
-
-    def compute_list_price_2(self, record):
-        precio_venta = 0
-        base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
-        base_metal = base_metal[0].pnt_base_metal if base_metal else 0
-
-        if record.pnt_purchase_unit == 'weight':
-            precio_venta = record.pnt_hechura_venta + base_metal
-
-        if record.pnt_purchase_unit == 'piece':
-            precio_venta = record.pnt_hechura_venta + base_metal
-
-        precio_venta = self.compute_redondeo(precio_venta)
-
-        return precio_venta
-
-    def compute_list_price_4(self, record):
-        precio_venta = 0
-        base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
-        base_metal = base_metal[0].pnt_base_metal if base_metal else 0
-
-        if record.pnt_purchase_unit == 'piece':
-            precio_venta = (((base_metal + base_metal * (
-                    record.pnt_merma / 100)) * record.pnt_peso_neto) + record.pnt_hechura_compra) * record.pnt_escandallo
-
-        if record.pnt_purchase_unit == 'weight':
-            precio_venta = ((base_metal + base_metal * (
-                    record.pnt_merma / 100) + record.pnt_hechura_compra) * record.pnt_peso_neto) * record.pnt_escandallo
-
-        precio_venta = self.compute_redondeo(precio_venta)
-
-        return precio_venta
+    # def compute_list_price_4(self, record):
+    #     precio_venta = 0
+    #     base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
+    #     base_metal = base_metal[0].pnt_base_metal if base_metal else 0
+    #
+    #     if record.pnt_purchase_unit == 'piece':
+    #         precio_venta = (((base_metal + base_metal * (
+    #                 record.pnt_merma / 100)) * record.pnt_peso_neto) + record.pnt_hechura_compra) * record.pnt_escandallo
+    #
+    #     if record.pnt_purchase_unit == 'weight':
+    #         precio_venta = ((base_metal + base_metal * (
+    #                 record.pnt_merma / 100) + record.pnt_hechura_compra) * record.pnt_peso_neto) * record.pnt_escandallo
+    #
+    #     precio_venta = self.compute_redondeo(precio_venta)
+    #
+    #     return precio_venta
 
     def compute_manual_price(self, record):
         if not record.pnt_list_price:
@@ -350,34 +339,24 @@ class ProductProduct(models.Model):
         string='Quilataje',
         digits=(12, 2)
     )
-    pnt_tipo_metal = fields.Many2one(
-        string='Metal Type',
-        comodel_name='pnt.type.metal'
-    )
-    pnt_metal = fields.Many2one(
-        string='Metal',
-        comodel_name='pnt.metal'
-    )
-    pnt_design = fields.Many2one(
-        string='Design',
-        comodel_name='pnt.design'
-    )
-    pnt_subdesign = fields.Many2one(
-        string='Subdesign',
-        comodel_name='pnt.subdesign'
-    )
-    pnt_format = fields.Many2one(
-        string='Format',
-        comodel_name='pnt.format'
-    )
-    pnt_stones = fields.Many2one(
-        string='Stones',
-        comodel_name='pnt.stones'
-    )
-    pnt_density = fields.Many2one(
-        string='Density',
-        comodel_name='pnt.density'
-    )
+
+    # pnt_design = fields.Many2one(
+    #     string='Design',
+    #     comodel_name='pnt.design'
+    # )
+    # pnt_subdesign = fields.Many2one(
+    #     string='Subdesign',
+    #     comodel_name='pnt.subdesign'
+    # )
+    # pnt_format = fields.Many2one(
+    #     string='Format',
+    #     comodel_name='pnt.format'
+    # )
+
+    # pnt_density = fields.Many2one(
+    #     string='Density',
+    #     comodel_name='pnt.density'
+    # )
     pnt_sale_unit = fields.Selection(
         string='Sale Unit',
         selection=[
@@ -487,32 +466,32 @@ class ProductProduct(models.Model):
                 self.pnt_escandallo = self.get_categ_parent_id(self.categ_id).pnt_escandallo
             self.pnt_precio_obligatorio = self.pnt_precio_obligatorio
 
-    @api.depends('pnt_merma', 'pnt_peso_neto', 'pnt_tipo_metal',
-                 'pnt_peso_neto', 'pnt_hechura_compra', 'pnt_escandallo', 'pnt_purchase_unit', 'categ_id')
-    def _compute_pnt_hechura_venta(self):
-        for record in self:
-            parent_categ_id = self.get_categ_parent(record.categ_id)
-
-            if parent_categ_id == '2':
-                base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
-                base_metal = base_metal[0].pnt_base_metal if base_metal else 0
-
-                purchase_unit = record.seller_ids.filtered(lambda x: x.pnt_activo == True)
-
-                if record.pnt_peso_neto != 0 and purchase_unit.pnt_purchase_unit == 'piece':
-                    hechura = (((((base_metal + base_metal * (
-                            purchase_unit.pnt_merma / 100)) * record.pnt_peso_neto)
-                                                  + purchase_unit.pnt_hechura_compra) / record.pnt_peso_neto)
-                                                * record.pnt_escandallo) - base_metal
-
-                    record.pnt_hechura_venta = self.compute_redondeo(hechura)
-
-                if purchase_unit.pnt_purchase_unit == 'weight':
-                    hechura = ((base_metal + base_metal * (
-                            purchase_unit.pnt_merma / 100) + purchase_unit.pnt_hechura_compra)
-                                                * record.pnt_escandallo) - base_metal
-
-                    record.pnt_hechura_venta = self.compute_redondeo(hechura)
+    # @api.depends('pnt_merma', 'pnt_peso_neto', 'pnt_tipo_metal',
+    #              'pnt_peso_neto', 'pnt_hechura_compra', 'pnt_escandallo', 'pnt_purchase_unit', 'categ_id')
+    # def _compute_pnt_hechura_venta(self):
+    #     for record in self:
+    #         parent_categ_id = self.get_categ_parent(record.categ_id)
+    #
+    #         if parent_categ_id == '2':
+    #             base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
+    #             base_metal = base_metal[0].pnt_base_metal if base_metal else 0
+    #
+    #             purchase_unit = record.seller_ids.filtered(lambda x: x.pnt_activo == True)
+    #
+    #             if record.pnt_peso_neto != 0 and purchase_unit.pnt_purchase_unit == 'piece':
+    #                 hechura = (((((base_metal + base_metal * (
+    #                         purchase_unit.pnt_merma / 100)) * record.pnt_peso_neto)
+    #                                               + purchase_unit.pnt_hechura_compra) / record.pnt_peso_neto)
+    #                                             * record.pnt_escandallo) - base_metal
+    #
+    #                 record.pnt_hechura_venta = self.compute_redondeo(hechura)
+    #
+    #             if purchase_unit.pnt_purchase_unit == 'weight':
+    #                 hechura = ((base_metal + base_metal * (
+    #                         purchase_unit.pnt_merma / 100) + purchase_unit.pnt_hechura_compra)
+    #                                             * record.pnt_escandallo) - base_metal
+    #
+    #                 record.pnt_hechura_venta = self.compute_redondeo(hechura)
 
     def get_categ_parent(self, categ):
         categ_object = self.env['product.category']
@@ -539,56 +518,56 @@ class ProductProduct(models.Model):
             if parent_categ_id == '4':
                 record.lst_price = self.compute_list_price_4(record)
 
-    def compute_list_price_1(self, record):
-        precio_venta = 0
-        base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
-        base_metal = base_metal[0].pnt_base_metal if base_metal else 0
-        purchase_unit = record.seller_ids.filtered(lambda x: x.pnt_activo == True)
-        if purchase_unit.pnt_purchase_unit == 'piece':
-            precio_venta = (((base_metal + base_metal * (purchase_unit.pnt_merma / 100)) * record.pnt_peso_neto)
-                            + purchase_unit.pnt_hechura_compra) * record.pnt_escandallo
+    # def compute_list_price_1(self, record):
+    #     precio_venta = 0
+    #     base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
+    #     base_metal = base_metal[0].pnt_base_metal if base_metal else 0
+    #     purchase_unit = record.seller_ids.filtered(lambda x: x.pnt_activo == True)
+    #     if purchase_unit.pnt_purchase_unit == 'piece':
+    #         precio_venta = (((base_metal + base_metal * (purchase_unit.pnt_merma / 100)) * record.pnt_peso_neto)
+    #                         + purchase_unit.pnt_hechura_compra) * record.pnt_escandallo
+    #
+    #     if purchase_unit.pnt_purchase_unit == 'weight':
+    #         precio_venta = (((base_metal + (base_metal * purchase_unit.pnt_merma) / 100) +
+    #                          purchase_unit.pnt_hechura_compra) * record.pnt_peso_neto) * record.pnt_escandallo
+    #
+    #     precio_venta = self.compute_redondeo(precio_venta)
+    #
+    #     return precio_venta
 
-        if purchase_unit.pnt_purchase_unit == 'weight':
-            precio_venta = (((base_metal + (base_metal * purchase_unit.pnt_merma) / 100) +
-                             purchase_unit.pnt_hechura_compra) * record.pnt_peso_neto) * record.pnt_escandallo
+    # def compute_list_price_2(self, record):
+    #     precio_venta = 0
+    #     base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
+    #     base_metal = base_metal[0].pnt_base_metal if base_metal else 0
+    #
+    #     purchase_unit = record.seller_ids.filtered(lambda x: x.pnt_activo == True)
+    #     if purchase_unit.pnt_purchase_unit == 'weight':
+    #         precio_venta = record.pnt_hechura_venta + base_metal
+    #
+    #     if purchase_unit.pnt_purchase_unit == 'piece':
+    #         precio_venta = record.pnt_hechura_venta + base_metal
+    #
+    #     precio_venta = self.compute_redondeo(precio_venta)
+    #
+    #     return precio_venta
 
-        precio_venta = self.compute_redondeo(precio_venta)
-
-        return precio_venta
-
-    def compute_list_price_2(self, record):
-        precio_venta = 0
-        base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
-        base_metal = base_metal[0].pnt_base_metal if base_metal else 0
-
-        purchase_unit = record.seller_ids.filtered(lambda x: x.pnt_activo == True)
-        if purchase_unit.pnt_purchase_unit == 'weight':
-            precio_venta = record.pnt_hechura_venta + base_metal
-
-        if purchase_unit.pnt_purchase_unit == 'piece':
-            precio_venta = record.pnt_hechura_venta + base_metal
-
-        precio_venta = self.compute_redondeo(precio_venta)
-
-        return precio_venta
-
-    def compute_list_price_4(self, record):
-        precio_venta = 0
-        base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
-        base_metal = base_metal[0].pnt_base_metal if base_metal else 0
-        purchase_unit = record.seller_ids.filtered(lambda x: x.pnt_activo == True)
-
-        if purchase_unit.pnt_purchase_unit == 'piece':
-            precio_venta = (((base_metal + (base_metal * purchase_unit.pnt_merma) / 100) *
-                             record.pnt_peso_neto) + purchase_unit.pnt_hechura_compra) * record.pnt_escandallo
-
-        if purchase_unit.pnt_purchase_unit == 'weight':
-            precio_venta = (((base_metal + (base_metal * purchase_unit.pnt_merma) / 100) + purchase_unit.pnt_hechura_compra) *
-                            record.pnt_peso_neto) * record.pnt_escandallo
-
-        precio_venta = self.compute_redondeo(precio_venta)
-
-        return precio_venta
+    # def compute_list_price_4(self, record):
+    #     precio_venta = 0
+    #     base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.pnt_tipo_metal.id)])
+    #     base_metal = base_metal[0].pnt_base_metal if base_metal else 0
+    #     purchase_unit = record.seller_ids.filtered(lambda x: x.pnt_activo == True)
+    #
+    #     if purchase_unit.pnt_purchase_unit == 'piece':
+    #         precio_venta = (((base_metal + (base_metal * purchase_unit.pnt_merma) / 100) *
+    #                          record.pnt_peso_neto) + purchase_unit.pnt_hechura_compra) * record.pnt_escandallo
+    #
+    #     if purchase_unit.pnt_purchase_unit == 'weight':
+    #         precio_venta = (((base_metal + (base_metal * purchase_unit.pnt_merma) / 100) + purchase_unit.pnt_hechura_compra) *
+    #                         record.pnt_peso_neto) * record.pnt_escandallo
+    #
+    #     precio_venta = self.compute_redondeo(precio_venta)
+    #
+    #     return precio_venta
 
     def compute_manual_price(self, record):
         if not record.pnt_list_price:
@@ -904,59 +883,59 @@ class ProductSupplierinfo(models.Model):
             if parent_categ_id == '4':
                 record.price = self.compute_list_price_4(record)
 
-    def compute_list_price_1(self, record):
-        precio = 0
-        base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.product_id.pnt_tipo_metal.id)])
-        base_metal = base_metal[0].pnt_base_metal if base_metal else 0
+    # def compute_list_price_1(self, record):
+    #     precio = 0
+    #     base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.product_id.pnt_tipo_metal.id)])
+    #     base_metal = base_metal[0].pnt_base_metal if base_metal else 0
+    #
+    #     if record.pnt_purchase_unit == 'weight':
+    #         precio = (record.pnt_hechura_compra + base_metal + base_metal * (
+    #                 record.pnt_merma / 100)) * record.product_id.pnt_peso_neto
+    #
+    #     else:
+    #         record.pnt_purchase_unit = 'piece'
+    #         precio = (base_metal + base_metal * (
+    #                 record.pnt_merma / 100)) * record.product_id.pnt_peso_neto + record.pnt_hechura_compra
+    #
+    #     precio = self.compute_redondeo(precio)
+    #
+    #     return precio
 
-        if record.pnt_purchase_unit == 'weight':
-            precio = (record.pnt_hechura_compra + base_metal + base_metal * (
-                    record.pnt_merma / 100)) * record.product_id.pnt_peso_neto
+    # def compute_list_price_2(self, record):
+    #     precio = 0
+    #     base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.product_id.pnt_tipo_metal.id)])
+    #     base_metal = base_metal[0].pnt_base_metal if base_metal else 0
+    #
+    #     if record.pnt_purchase_unit == 'weight':
+    #         precio = (base_metal + base_metal * (
+    #                 record.pnt_merma / 100) + record.pnt_hechura_compra) * record.product_id.pnt_peso_neto
+    #
+    #     else:
+    #         record.pnt_purchase_unit = 'piece'
+    #         precio = (base_metal + base_metal * (
+    #                 record.pnt_merma / 100)) * record.product_id.pnt_peso_neto + record.pnt_hechura_compra
+    #
+    #     precio = self.compute_redondeo(precio)
+    #
+    #     return precio
 
-        else:
-            record.pnt_purchase_unit = 'piece'
-            precio = (base_metal + base_metal * (
-                    record.pnt_merma / 100)) * record.product_id.pnt_peso_neto + record.pnt_hechura_compra
-
-        precio = self.compute_redondeo(precio)
-
-        return precio
-
-    def compute_list_price_2(self, record):
-        precio = 0
-        base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.product_id.pnt_tipo_metal.id)])
-        base_metal = base_metal[0].pnt_base_metal if base_metal else 0
-
-        if record.pnt_purchase_unit == 'weight':
-            precio = (base_metal + base_metal * (
-                    record.pnt_merma / 100) + record.pnt_hechura_compra) * record.product_id.pnt_peso_neto
-
-        else:
-            record.pnt_purchase_unit = 'piece'
-            precio = (base_metal + base_metal * (
-                    record.pnt_merma / 100)) * record.product_id.pnt_peso_neto + record.pnt_hechura_compra
-
-        precio = self.compute_redondeo(precio)
-
-        return precio
-
-    def compute_list_price_4(self, record):
-        precio = 0
-        base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.product_id.pnt_tipo_metal.id)])
-        base_metal = base_metal[0].pnt_base_metal if base_metal else 0
-
-        if record.pnt_purchase_unit == 'weight':
-            precio = ((base_metal + base_metal * (
-                    record.pnt_merma / 100) + record.pnt_hechura_compra) * record.product_id.pnt_peso_neto)
-
-        else:
-            record.pnt_purchase_unit = 'piece'
-            precio = ((base_metal + base_metal * (
-                    record.pnt_merma / 100)) * record.product_id.pnt_peso_neto) + record.pnt_hechura_compra
-
-        precio = self.compute_redondeo(precio)
-
-        return precio
+    # def compute_list_price_4(self, record):
+    #     precio = 0
+    #     base_metal = self.env['pnt.base.metal'].search([('pnt_metal_id', '=', record.product_id.pnt_tipo_metal.id)])
+    #     base_metal = base_metal[0].pnt_base_metal if base_metal else 0
+    #
+    #     if record.pnt_purchase_unit == 'weight':
+    #         precio = ((base_metal + base_metal * (
+    #                 record.pnt_merma / 100) + record.pnt_hechura_compra) * record.product_id.pnt_peso_neto)
+    #
+    #     else:
+    #         record.pnt_purchase_unit = 'piece'
+    #         precio = ((base_metal + base_metal * (
+    #                 record.pnt_merma / 100)) * record.product_id.pnt_peso_neto) + record.pnt_hechura_compra
+    #
+    #     precio = self.compute_redondeo(precio)
+    #
+    #     return precio
 
     def compute_manual_price(self, record):
         precio = self.compute_redondeo(record.pnt_manual_price)

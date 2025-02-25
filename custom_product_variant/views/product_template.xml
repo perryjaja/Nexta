@@ -98,25 +98,25 @@
             </xpath>
 
             <!-- Pestaña de Compras -->
-            <xpath expr="//group[@name='vendors']" position="before">
-                <group colspan="2">
-                    <group>
-                        <label for="standard_price" groups="base.group_user"
-                               attrs="{'invisible': [('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False)]}"/>
-                        <div name="standard_price_uom" groups="base.group_user"
-                             attrs="{'invisible': [('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False)]}">
-                            <field name="standard_price" widget="monetary"
-                                   options="{'currency_field': 'cost_currency_id'}"/>
-                        </div>
-                        <field name="pnt_merma" invisible="1"/>
-                    </group>
-                    <group string="Hechura Compra" invisible="1">
-                        <field name="pnt_hechura_compra"/>
-                        <field name="pnt_purchase_unit"/>
-                    </group>
-                </group>
-                <button type="object" name="btn_seller_price" string="Update Cost"/>
-            </xpath>
+<!--            <xpath expr="//group[@name='vendors']" position="before">-->
+<!--                <group colspan="2">-->
+<!--                    <group>-->
+<!--                        <label for="standard_price" groups="base.group_user"-->
+<!--                               attrs="{'invisible': [('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False)]}"/>-->
+<!--                        <div name="standard_price_uom" groups="base.group_user"-->
+<!--                             attrs="{'invisible': [('product_variant_count', '&gt;', 1), ('is_product_variant', '=', False)]}">-->
+<!--                            <field name="standard_price" widget="monetary"-->
+<!--                                   options="{'currency_field': 'cost_currency_id'}"/>-->
+<!--                        </div>-->
+<!--                        <field name="pnt_merma" invisible="1"/>-->
+<!--                    </group>-->
+<!--                    <group string="Hechura Compra" invisible="1">-->
+<!--                        <field name="pnt_hechura_compra"/>-->
+<!--                        <field name="pnt_purchase_unit"/>-->
+<!--                    </group>-->
+<!--                </group>-->
+<!--                <button type="object" name="btn_seller_price" string="Update Cost"/>-->
+<!--            </xpath>-->
 
             <!-- Pestaña caracteristicas-->
             <xpath expr="//page[@name='general_information']" position="after">
@@ -125,23 +125,20 @@
                         <field name="barcode"/>
                     </group>
                     <group colspan="2">
-                        <field name="pnt_tipo_metal" options="{'no_create': True, 'no_open': True}"></field>
-                    </group>
-                    <group colspan="2">
-                        <group>
-                            <field name="pnt_categ_parent_id" invisible="1"/>
+<!--                        <group>-->
+<!--                            <field name="pnt_categ_parent_id" invisible="1"/>-->
 
-                            <field name="pnt_design"
-                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"
-                                   options="{'no_create': True, 'no_open': True}"/>
-                            <field name="pnt_subdesign"
-                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"
-                                   options="{'no_create': True, 'no_open': True}"/>
-                            <field name="pnt_format"
-                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"
-                                   options="{'no_create': True, 'no_open': True}"/>
+<!--                            <field name="pnt_design"-->
+<!--                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"-->
+<!--                                   options="{'no_create': True, 'no_open': True}"/>-->
+<!--                            <field name="pnt_subdesign"-->
+<!--                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"-->
+<!--                                   options="{'no_create': True, 'no_open': True}"/>-->
+<!--                            <field name="pnt_format"-->
+<!--                                   domain="['|',('pnt_product_category_id','=',categ_id),('pnt_product_category_id','=',pnt_categ_parent_id)]"-->
+<!--                                   options="{'no_create': True, 'no_open': True}"/>-->
 
-                        </group>
+<!--                        </group>-->
                         <group>
                             <field name="pnt_metal" options="{'no_create': True, 'no_open': True}"/>
                             <field name="pnt_stones" options="{'no_create': True, 'no_open': True}"/>
