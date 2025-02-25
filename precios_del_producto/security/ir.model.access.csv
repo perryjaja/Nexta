@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+precios_del_producto.access_product_price,acces_product_price,precios_del_producto.model_product_price,,1,1,1,1

@@ -1,0 +1,54 @@
+<odoo>
+   <data>
+       <record id="price_product_view_form" model="ir.ui.view">
+           <field name="name">price_product_view_form</field>
+           <field name="model">product.price</field>
+           <field name="arch" type="xml">
+               <form string="Precio de producto">
+                   <sheet>
+                       <group>
+                           <field name="product_id"/>
+                           <field name="sin_merma"/>
+                           <field name="type_venta"/>
+                           <field name="base_price"/>
+                           <field name="peso"/>
+                           <field name="merma"/>
+                           <field name="hechura"/>
+                           <field name="escandallo"/>
+                           <field invisible="type_venta != 'pieza' and type_venta != 'all'" name="prec_vent_unitario"/>
+                           <field invisible="type_venta != 'weight' and type_venta != 'all'" name="prec_vent_gramo"/>
+                           <field invisible="type_venta != 'pieza' and type_venta != 'all'" name="vent_pieza"/>
+                           <field invisible="type_venta != 'weight' and type_venta != 'all'" name="vent_peso"/>
+                       </group>
+                   </sheet>
+               </form>
+           </field>
+       </record>
+       <record id="price_product_view_tree" model="ir.ui.view">
+           <field name="name">price_product_view_tree</field>
+           <field name="model">product.price</field>
+           <field name="arch" type="xml">
+               <tree string="Precio de producto">
+                   <field name="product_id"/>
+                   <field name="sin_merma"/>
+                   <field name="type_venta"/>
+                   <field name="base_price"/>
+                   <field name="peso"/>
+                   <field name="merma"/>
+                   <field name="hechura"/>
+                   <field name="escandallo"/>
+                   <field invisible="type_venta != 'pieza' and type_venta != 'all'" name="prec_vent_unitario"/>
+                   <field invisible="type_venta != 'weight' and type_venta != 'all'" name="prec_vent_gramo"/>
+                   <field invisible="type_venta != 'pieza' and type_venta != 'all'" name="vent_pieza"/>
+                   <field invisible="type_venta != 'weight' and type_venta != 'all'" name="vent_peso"/>
+               </tree>
+           </field>
+       </record>
+       <record id="action_price_product" model="ir.actions.act_window">
+           <field name="name">Precio de producto</field>
+           <field name="res_model">product.price</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+       <menuitem id="menu_price_product_list" name="Precio de Producto" parent="stock.menu_stock_inventory_control" action="action_price_product" sequence="30"/>
+   </data>
+</odoo>
