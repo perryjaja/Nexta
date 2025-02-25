@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="account_move_line_balance_custom">
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account_balance_line.account_move_line_balance_custom"/>
+        <field name="arch" type="xml">
+            <field name="balance" position="after">
+                <field name="pnt_punteo"/>
+                <field name="payment_mode_id"/>
+                <button attrs="{'invisible': [('pnt_punteo', '=', False)]}" icon="fa-check" type="object" name="button_pnt_punteo"/>
+                <button attrs="{'invisible': [('pnt_punteo', '=', True)]}" icon="fa-close" type="object" name="button_pnt_punteo"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_payments_tree">
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account_due_list.view_payments_tree"/>
+        <field name="arch" type="xml">
+            <field name="amount_residual" position="after">
+                <field name="company_id" invisible="1"/>
+                <field name="pnt_punteo"/>
+                <field name="payment_mode_id"/>
+                <button attrs="{'invisible': [('pnt_punteo', '=', False)]}" icon="fa-check" type="object" name="button_pnt_punteo"/>
+                <button attrs="{'invisible': [('pnt_punteo', '=', True)]}" icon="fa-close" type="object" name="button_pnt_punteo"/>
+            </field>
+        </field>
+    </record>
+</odoo>

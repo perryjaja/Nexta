@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_sale_order_quilates_form">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
+                <field name="pnt_detalle" force_save="1" readonly="1"/>
+                <field name="pnt_quilates" />
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
+                <field name="pnt_precio_gramo" force_save="1" readonly="1"/>
+                <field name="pnt_peso" force_save="1" readonly="1"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree" position="attributes">
+                <attribute name="limit">150</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_sale_order_readonly_group_form">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="view_sale_order_quilates_form"/>
+        <field name="groups_id"
+               eval="[(4, ref('custom_pnt.group_pnt_cambiar_precio_gramo'))]"/>
+        <field name="priority" eval="9999"/>
+        <field name="arch" type="xml">
+            <field name="pnt_precio_gramo" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_sale_order_readonly_peso_group_form">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="view_sale_order_quilates_form"/>
+        <field name="groups_id"
+               eval="[(4, ref('custom_pnt.group_pnt_cambiar_peso_ppto'))]"/>
+        <field name="priority" eval="9999"/>
+        <field name="arch" type="xml">
+            <field name="pnt_peso" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="pnt_view_sale_order_print_tree">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="amount_total" position="before">
+                <field name="amount_untaxed" string="Base imponible"/>
+                <field name="pnt_invoice_amount_untaxed" string="Base Facturada"/>
+                <field name="pnt_invoice_pending_amount" string="Base Pdte. Facturar"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="sale.action_order_report_all" model="ir.actions.act_window">
+        <field name="view_mode">pivot,graph</field>
+    </record>
+
+</odoo>

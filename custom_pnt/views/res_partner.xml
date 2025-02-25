@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_partner_form">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="priority" eval="9999"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='property_payment_term_id']" position="after">
+                <field name="pnt_payment_day_client"/>
+            </xpath>
+            <xpath expr="//field[@name='property_supplier_payment_term_id']" position="after">
+                <field name="pnt_payment_day_supplier"/>
+            </xpath>
+            
+            <xpath expr="//button[@name='toggle_active']" position="replace">
+                <button name="toggle_active" type="object" class="oe_stat_button"
+                        icon="fa-archive" groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager">
+                    <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                </button>
+                <button name="muestra_ranking_proveedores" type="object" class="oe_stat_button"
+                        attrs="{'invisible':[('supplier', '=', False)]}" string="Ranking de ventas"
+                        icon="fa-usd" groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager">
+                </button>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

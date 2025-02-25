@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pnt_internal_picking_barcode_scanner_template" xml:space="preserve">
+
+     <t t-name="InternalPickingBarcodeScannerInput">
+        <div id="InternalPickingBarcodeScannerInput">
+            <div class="row">
+                <table style="width:100%">
+                    <tr style="width:100%">
+                        <td style="width:15%"></td>
+                        <td style="width:25%">
+                            <span> Producto: </span><br/>
+                            <input type="text" name="internal_picking_product_barcode_read"
+                                   id="internal_picking_product_barcode_read"
+                                   class="o_internal_picking_product_barcode_input"
+                                   context="{}"
+                                   style="max-width: 400px; width: 250px"/>
+
+                        </td>
+                        <td style="width:25%">
+                            <span> Lote: </span><br/>
+                            <input type="text" name="internal_picking_lot_barcode_read" id="internal_picking_lot_barcode_read"
+                                   class="o_internal_picking_lot_barcode_input"
+                                   style="max-width: 400px; width: 250px"/>
+                        </td>
+                        <td style="width:25%">
+                            <span> Cantidad: </span><br/>
+                            <input type="number" name="internal_picking_cantidad_read" id="internal_picking_cantidad_read"
+                                   min="0" class="o_internal_picking_cantidad_input"
+                                   style="max-width: 200px; width: 100px"/>
+                        </td>
+                        <td style="width:15%">
+                            <input type="hidden" name="id" t-att-value="widget.id" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </t>
+</templates>

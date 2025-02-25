@@ -1,0 +1,940 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* custom_pnt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-02 14:56+0000\n"
+"PO-Revision-Date: 2020-12-02 14:56+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_res_company__pnt_base_metal_market_ids
+msgid " Base Metal Market"
+msgstr " Base Metal Mercado"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_category_escandallo_wizard
+msgid "<span style=\"font-size:14px;\">Vas a actualizar los escandallos de todos los\n"
+"                        productos de la familia seleccionada, es correcto?\n"
+"                    </span>"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_supplierinfo__pnt_activo
+msgid "Active"
+msgstr "Activo"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.product_category_form_view
+msgid "Actualizar escandallos"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_purchase_order_line__pnt_aleacion
+msgid "Alloy"
+msgstr "Aleación"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_base_metal__pnt_base_metal
+msgid "Base Metal"
+msgstr ""
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.view_company_form
+msgid "Base Metal (€/g)"
+msgstr ""
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.view_company_form
+msgid "Base Metal Market"
+msgstr "Base Metal Mercado"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_category_escandallo_wizard
+msgid "Cancelar"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__pnt_cantidad_recibida
+msgid "Cantidad recibida"
+msgstr ""
+
+#. module: custom_pnt
+#. openerp-web
+#: code:addons/custom_pnt/static/src/xml/template.xml:26
+#, python-format
+msgid "Cantidad:"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_categ_parent_id
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_categ_parent_id
+msgid "Categ_parent"
+msgstr "Categoría padre"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_pnt_category_escandallo_wizard
+msgid "Categorias de escandallos"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_density__pnt_product_category_id
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_design__pnt_product_category_id
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_format__pnt_product_category_id
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_subdesign__pnt_product_category_id
+msgid "Category"
+msgstr "Categoría"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.product_normal_form_view
+msgid "Characteristics"
+msgstr "Características"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move_line__pnt_partner_id
+msgid "Cliente"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_base_metal__pnt_company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_category_escandallo_wizard
+msgid "Confirmar"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_base_metal__create_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_category_escandallo_wizard__create_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_density__create_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_design__create_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_format__create_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_metal__create_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_stones__create_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_subdesign__create_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_type_metal__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_base_metal__create_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_category_escandallo_wizard__create_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_density__create_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_design__create_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_format__create_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_metal__create_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_stones__create_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_subdesign__create_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_type_metal__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.product_normal_form_view
+msgid "Default Code"
+msgstr "Referencia"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.view_lorente_picking_form
+msgid "Demanda Inicial"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.actions.act_window,name:custom_pnt.action_pnt_density
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_density__name
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_density
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_density
+#: model:ir.ui.menu,name:custom_pnt.menu_pnt_density
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_form_density
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_tree_density
+msgid "Density"
+msgstr "Densidad"
+
+#. module: custom_pnt
+#: model:ir.actions.act_window,name:custom_pnt.action_pnt_design
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_design__name
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_design
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_design
+#: model:ir.ui.menu,name:custom_pnt.menu_pnt_design
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_form_design
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_tree_design
+msgid "Design"
+msgstr "Diseño"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_detail
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_detail
+#: model:ir.model.fields,field_description:custom_pnt.field_sale_order_line__pnt_detalle
+msgid "Details"
+msgstr "Detalle"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__pnt_discount
+msgid "Discount"
+msgstr "Descuento"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_supplierinfo__pnt_discount_hechura_compra
+msgid "Discount Hechura Compra(%)"
+msgstr "Descuento Hechura Compra(%)"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_base_metal__display_name
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_category_escandallo_wizard__display_name
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_density__display_name
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_design__display_name
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_format__display_name
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_metal__display_name
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_stones__display_name
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_subdesign__display_name
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_type_metal__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: custom_pnt
+#: code:addons/custom_pnt/wizards/product_category_escandallo_wizard.py:21
+#, python-format
+msgid "Error desconocido."
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_category__pnt_escandallo
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_escandallo
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_escandallo
+msgid "Escandallo"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_escandallo_manual
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_escandallo_manual
+msgid "Escandallo Manual"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.actions.act_window,name:custom_pnt.action_pnt_format
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_format__name
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_format
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_format
+#: model:ir.ui.menu,name:custom_pnt.menu_pnt_format
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_form_format
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_tree_format
+msgid "Format"
+msgstr "Formato"
+
+#. module: custom_pnt
+#: selection:sale.order,invoice_status:0
+msgid "Fully Invoiced"
+msgstr "Facturado"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_picking__pnt_check_deposito
+msgid "Gender Delivered in Deposit"
+msgstr "Género entregado a depósito "
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.view_lorente_picking_form
+msgid "Hecho"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_category__pnt_hechura_compra
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_hechura_compra
+#: model:ir.model.fields,field_description:custom_pnt.field_product_supplierinfo__pnt_hechura_compra
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_hechura_compra
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__pnt_hechura_compra
+#: model_terms:ir.ui.view,arch_db:custom_pnt.product_normal_form_view
+#: model_terms:ir.ui.view,arch_db:custom_pnt.product_supplierinfo_form_view
+msgid "Hechura Compra"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_hechura_venta
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_hechura_venta
+#: model_terms:ir.ui.view,arch_db:custom_pnt.product_normal_form_view
+msgid "Hechura Venta"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_base_metal__id
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_category_escandallo_wizard__id
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_density__id
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_design__id
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_format__id
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_metal__id
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_stones__id
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_subdesign__id
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_type_metal__id
+msgid "ID"
+msgstr ""
+
+#. module: custom_pnt
+#: code:addons/custom_pnt/models/stock_picking.py:269
+#, python-format
+msgid "Immediate Transfer?"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_description_intern
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_description_intern
+msgid "Intern Descripcion"
+msgstr "Descripción Interna"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__default_code
+msgid "Internal Reference"
+msgstr "Referencia interna"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_sale_order__invoice_count
+msgid "Invoice Count"
+msgstr "Recuento de facturas"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_sale_order__invoice_status
+msgid "Invoice Status"
+msgstr "Estado factura"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_sale_order__invoice_ids
+msgid "Invoices"
+msgstr "Facturas"
+
+#. module: custom_pnt
+#: code:addons/custom_pnt/models/product.py:750
+#, python-format
+msgid "Is not possible have more one supplier active in one product"
+msgstr "No se puede tener más de un proveedor activo en un producto"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_base_metal____last_update
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_category_escandallo_wizard____last_update
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_density____last_update
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_design____last_update
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_format____last_update
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_metal____last_update
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_stones____last_update
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_subdesign____last_update
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_type_metal____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_base_metal__write_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_category_escandallo_wizard__write_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_density__write_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_design__write_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_format__write_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_metal__write_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_stones__write_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_subdesign__write_uid
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_type_metal__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_base_metal__write_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_category_escandallo_wizard__write_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_density__write_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_design__write_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_format__write_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_metal__write_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_stones__write_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_subdesign__write_date
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_type_metal__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__list_price
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__lst_price
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__list_price
+msgid "List Price"
+msgstr "Precio Venta"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_list_price
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_list_price
+msgid "List Price Lorente"
+msgstr "Precio Venta Lorente"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__pnt_lot
+msgid "Lot"
+msgstr "Lote"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_return_picking_line__pnt_lot_id
+msgid "Lot/Serial Number"
+msgstr "Lote/Nº de serie"
+
+#. module: custom_pnt
+#. openerp-web
+#: code:addons/custom_pnt/static/src/xml/template.xml:20
+#, python-format
+msgid "Lote:"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_supplierinfo__pnt_manual_price
+msgid "Manual Price"
+msgstr "Precio Manual"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_category__pnt_merma
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_merma
+#: model:ir.model.fields,field_description:custom_pnt.field_product_supplierinfo__pnt_merma
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_merma
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__pnt_merma
+msgid "Merma"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.actions.act_window,name:custom_pnt.action_pnt_metal
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_base_metal__pnt_metal_id
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_metal__name
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_metal
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_metal
+#: model:ir.ui.menu,name:custom_pnt.menu_pnt_metal
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_form_metal
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_tree_metal
+msgid "Metal"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_tipo_metal
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_tipo_metal
+msgid "Metal Type"
+msgstr "Tipo Metal"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_peso_neto
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_peso_neto
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__pnt_peso_neto
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move_line__pnt_peso_neto
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_return_picking_line__pnt_peso_neto
+msgid "Net Weight"
+msgstr "Peso Neto"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__pnt_peso_neto_global
+msgid "Net Weight global"
+msgstr "Peso neto global"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__pnt_peso_neto_global_compute
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move_line__pnt_peso_neto_global_compute
+msgid "Net Weight global compute"
+msgstr "Peso neto global calculado"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_category__pnt_no_compute_sale_price
+msgid "No Compute Sale Price"
+msgstr "No Calcular Precio Venta"
+
+#. module: custom_pnt
+#: code:addons/custom_pnt/models/stock_picking.py:236
+#, python-format
+msgid "No coincide la cantidad recibida con la hecha."
+msgstr ""
+
+#. module: custom_pnt
+#: code:addons/custom_pnt/models/stock_picking.py:786
+#, python-format
+msgid "No hay stock disponible del lote."
+msgstr ""
+
+#. module: custom_pnt
+#: selection:sale.order,invoice_status:0
+msgid "Nothing to Invoice"
+msgstr "Nada que Facturar"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_purchase_order_line__pnt_observations
+msgid "Observations"
+msgstr "Observaciones"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_picking__pnt_tipo_interno
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_picking_type__pnt_tipo_interno
+msgid "Operación interna"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_picking__pnt_todo_plata
+msgid "PLATA"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_account_invoice__pnt_payment_day
+msgid "Payment day"
+msgstr "Dia de pago"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_res_partner__pnt_payment_day_client
+#: model:ir.model.fields,field_description:custom_pnt.field_res_users__pnt_payment_day_client
+msgid "Payment day client"
+msgstr "Dia de pago cliente"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_res_partner__pnt_payment_day_supplier
+#: model:ir.model.fields,field_description:custom_pnt.field_res_users__pnt_payment_day_supplier
+msgid "Payment day supplier"
+msgstr "Dia de pago proveedor"
+
+#. module: custom_pnt
+#: model:res.groups,name:custom_pnt.group_pnt_cambiar_precio_gramo
+msgid "Permitir cambios del precio gramo"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_category__pnt_peso_neto_obligatorio
+msgid "Peso Neto Obligatorio en Productos"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_peso_obligatorio
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_peso_obligatorio
+msgid "Peso obligatorio"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_stock_picking_type
+msgid "Picking Type"
+msgstr "Tipo de albarán"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move_line__picking_type_code
+msgid "Picking code"
+msgstr ""
+
+#. module: custom_pnt
+#: selection:product.category,pnt_purchase_unit:0
+#: selection:product.category,pnt_sale_unit:0
+#: selection:product.product,pnt_purchase_unit:0
+#: selection:product.product,pnt_sale_unit:0
+#: selection:product.supplierinfo,pnt_purchase_unit:0
+#: selection:product.template,pnt_purchase_unit:0
+#: selection:product.template,pnt_sale_unit:0
+#: selection:stock.move,pnt_purchase_unit:0
+msgid "Piece"
+msgstr "Pieza"
+
+#. module: custom_pnt
+#: code:addons/custom_pnt/models/stock_picking.py:231
+#, python-format
+msgid "Please add some items to move."
+msgstr ""
+
+#. module: custom_pnt
+#: code:addons/custom_pnt/wizards/stock_picking_return.py:149
+#, python-format
+msgid "Please specify at least one non-zero quantity."
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_category__pnt_cambio_escandallo
+msgid "Pnt Cambio Escandallo"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__pnt_primera_vez
+msgid "Pnt Primera Vez"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__pnt_purchase_unit
+msgid "Pnt Purchase Unit"
+msgstr "Unidad de compra"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_sale_order_line__pnt_precio_gramo
+msgid "Precio gramo"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_precio_obligatorio
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_precio_obligatorio
+msgid "Precio obligatorio"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_supplierinfo__price
+msgid "Price"
+msgstr "Precio"
+
+#. module: custom_pnt
+#: model:ir.model.fields,help:custom_pnt.field_product_product__list_price
+#: model:ir.model.fields,help:custom_pnt.field_product_template__list_price
+msgid "Price at which the product is sold to customers."
+msgstr "Precio al que se vende el producto a los clientes."
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_product_category
+#: model_terms:ir.ui.view,arch_db:custom_pnt.product_normal_form_view
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Movimientos de Producto (Stock Move Line)"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.product_normal_form_view
+msgid "Product Name"
+msgstr "Nombre del producto"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: custom_pnt
+#. openerp-web
+#: code:addons/custom_pnt/static/src/xml/template.xml:11
+#, python-format
+msgid "Producto:"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea pedido de compra"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_category__pnt_purchase_unit
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_purchase_unit
+#: model:ir.model.fields,field_description:custom_pnt.field_product_supplierinfo__pnt_purchase_unit
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_purchase_unit
+msgid "Purchase Unit"
+msgstr "Unidad Compra"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_quilataje
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_quilataje
+msgid "Quilataje"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_sale_order_line__pnt_quilates
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__pnt_quilates
+msgid "Quilates"
+msgstr ""
+
+#. module: custom_pnt
+#: model:res.groups,name:custom_pnt.group_pnt_recepcion_albaranes
+msgid "Recepción albaranes"
+msgstr ""
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.view_lorente_picking_form
+msgid "Register lots, packs, location"
+msgstr "Registrar lotes, paquetes, ubicación"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.product_normal_form_view
+msgid "Regularizar Ud. Venta"
+msgstr ""
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.view_lorente_picking_form
+msgid "Reserved"
+msgstr "Reservado"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_return_picking__location_id
+msgid "Return Location"
+msgstr "Ubicación de devolución"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_stock_return_picking
+msgid "Return Picking"
+msgstr "Albarán de devolución"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_stock_return_picking_line
+msgid "Return Picking Line"
+msgstr "Línea de Albarán de devolución"
+
+#. module: custom_pnt
+#: code:addons/custom_pnt/wizards/stock_picking_return.py:118
+#, python-format
+msgid "Return of %s"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_sale_order
+msgid "Sale Order"
+msgstr "Pedido de Venta"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__pnt_sale_price
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move_line__pnt_sale_price
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_return_picking_line__pnt_sale_price
+msgid "Sale Price"
+msgstr "Precio de venta"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_product_category__pnt_sale_unit
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_sale_unit
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_sale_unit
+msgid "Sale Unit"
+msgstr "Unidad Venta"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de existencias"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.view_lorente_picking_form
+msgid "Stock Moves"
+msgstr "Movimientos de stock"
+
+#. module: custom_pnt
+#: model:ir.actions.act_window,name:custom_pnt.action_pnt_stones
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_stones__name
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_stones
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_stones
+#: model:ir.ui.menu,name:custom_pnt.menu_pnt_stones
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_form_stones
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_tree_stones
+msgid "Stones"
+msgstr "Piedras"
+
+#. module: custom_pnt
+#: model:ir.actions.act_window,name:custom_pnt.action_pnt_subdesign
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_subdesign__name
+#: model:ir.model.fields,field_description:custom_pnt.field_product_product__pnt_subdesign
+#: model:ir.model.fields,field_description:custom_pnt.field_product_template__pnt_subdesign
+#: model:ir.ui.menu,name:custom_pnt.menu_pnt_subdesign
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_form_subdesign
+#: model_terms:ir.ui.view,arch_db:custom_pnt.pnt_view_tree_subdesign
+msgid "Subdesign"
+msgstr "Subdiseño"
+
+#. module: custom_pnt
+#: code:addons/custom_pnt/models/stock_picking.py:427
+#, python-format
+msgid "Supplier  is not assigned in article !"
+msgstr "El proveedor no está asignado al producto"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_product_supplierinfo
+msgid "Supplier Pricelist"
+msgstr "Tarifa de proveedor"
+
+#. module: custom_pnt
+#: model:ir.model.fields,help:custom_pnt.field_product_supplierinfo__price
+msgid "The price to purchase a product"
+msgstr "El precio al que se compra un producto"
+
+#. module: custom_pnt
+#. openerp-web
+#: code:addons/custom_pnt/static/src/js/internal_picking_barcodes.js:117
+#: code:addons/custom_pnt/static/src/js/internal_picking_barcodes.js:132
+#, python-format
+msgid "The product cannot be added."
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,help:custom_pnt.field_product_product__lst_price
+msgid "The sale price is managed from the product template. Click on the 'Configure Variants' button to set the extra attribute prices."
+msgstr "El precio de venta se gestiona desde la plantilla de producto. Haga clic en el botón 'Configurar variantes' para establecer los precios de los atributos adicionales."
+
+#. module: custom_pnt
+#: sql_constraint:product.product:0
+#: sql_constraint:product.template:0
+msgid "This default code already exist!"
+msgstr "¡La referencia interna ya existe!"
+
+#. module: custom_pnt
+#: code:addons/custom_pnt/models/purchase.py:25
+#, python-format
+msgid "This supplier (%s) is not assigned to the product %s!"
+msgstr "El proveedor %s no está asignado al producto %s"
+
+#. module: custom_pnt
+#: selection:sale.order,invoice_status:0
+msgid "To Invoice"
+msgstr "A facturar"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.view_lorente_picking_form
+#: model_terms:ir.ui.view,arch_db:custom_pnt.view_stock_move_line_operation_tree
+msgid "Total"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_picking__line_total_qty
+msgid "Total Quantity"
+msgstr "Cantidad total"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_stock_picking
+msgid "Transfer"
+msgstr "Albarán"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_picking__pnt_texto_trazabilidad
+msgid "Trazabilidad"
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_pnt_type_metal__name
+msgid "Type Metal"
+msgstr "Tipo Metal"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.view_lorente_picking_form
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_stock_move__pnt_update
+msgid "Update"
+msgstr "Actualizar"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.product_normal_form_view
+msgid "Update Cost"
+msgstr "Actualizar coste"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.view_company_form
+msgid "Update Price"
+msgstr "Actualizar Precios"
+
+#. module: custom_pnt
+#: selection:sale.order,invoice_status:0
+msgid "Upselling Opportunity"
+msgstr "Oportunidad de upselling"
+
+#. module: custom_pnt
+#. openerp-web
+#: code:addons/custom_pnt/static/src/js/internal_picking_barcodes.js:116
+#: code:addons/custom_pnt/static/src/js/internal_picking_barcodes.js:131
+#, python-format
+msgid "Warning"
+msgstr "Aviso"
+
+#. module: custom_pnt
+#: model:ir.model.fields,field_description:custom_pnt.field_sale_order_line__pnt_peso
+msgid "Weight"
+msgstr "Peso"
+
+#. module: custom_pnt
+#: selection:product.category,pnt_purchase_unit:0
+#: selection:product.category,pnt_sale_unit:0
+#: selection:product.product,pnt_purchase_unit:0
+#: selection:product.product,pnt_sale_unit:0
+#: selection:product.supplierinfo,pnt_purchase_unit:0
+#: selection:product.template,pnt_purchase_unit:0
+#: selection:product.template,pnt_sale_unit:0
+#: selection:stock.move,pnt_purchase_unit:0
+msgid "Weight(g)"
+msgstr "Peso(g)"
+
+#. module: custom_pnt
+#: code:addons/custom_pnt/models/stock_picking.py:245
+#, python-format
+msgid "You cannot validate a transfer if no quantites are reserved nor done. To force the transfer, switch in edit more and encode the done quantities."
+msgstr ""
+
+#. module: custom_pnt
+#: code:addons/custom_pnt/wizards/stock_picking_return.py:127
+#, python-format
+msgid "You have manually created product lines, please delete them to proceed."
+msgstr ""
+
+#. module: custom_pnt
+#: code:addons/custom_pnt/models/stock_picking.py:263
+#, python-format
+msgid "You need to supply a Lot/Serial number for product %s."
+msgstr ""
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_pnt_base_metal
+msgid "pnt_base_metal"
+msgstr "Base de metal"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_pnt_density
+msgid "pnt_density"
+msgstr "Densidad"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_pnt_design
+msgid "pnt_design"
+msgstr "Diseño"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_pnt_format
+msgid "pnt_format"
+msgstr "Formato"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_pnt_metal
+msgid "pnt_metal"
+msgstr "Metal"
+
+#. module: custom_pnt
+#: model_terms:ir.ui.view,arch_db:custom_pnt.view_stock_move_line_operation_tree
+msgid "pnt_peso_neto"
+msgstr "Peso Neto"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_pnt_stones
+msgid "pnt_stones"
+msgstr "Piedras"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_pnt_subdesign
+msgid "pnt_subdesign"
+msgstr "Subdiseño"
+
+#. module: custom_pnt
+#: model:ir.model,name:custom_pnt.model_pnt_type_metal
+msgid "pnt_type_metal"
+msgstr "Tipo de metal"
+

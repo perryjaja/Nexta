@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pnt_type_metal,access_pnt_type_metal,model_pnt_type_metal,,1,1,1,1
+access_pnt_base_metal,access_pnt_base_metal,model_pnt_base_metal,,1,1,1,1
+access_pnt_metal,access_pnt_metal,model_pnt_metal,,1,1,1,1
+access_pnt_design,access_pnt_design,model_pnt_design,,1,1,1,1
+access_pnt_subdesign,access_pnt_subdesign,model_pnt_subdesign,,1,1,1,1
+access_pnt_format,access_pnt_format,model_pnt_format,,1,1,1,1
+access_pnt_stones,access_pnt_stones,model_pnt_stones,,1,1,1,1
+access_pnt_density,access_pnt_density,model_pnt_density,,1,1,1,1
+access_res_partner_sale_user,res.partner.sale.user,base.model_res_partner,sales_team.group_sale_salesman,1,1,0,0

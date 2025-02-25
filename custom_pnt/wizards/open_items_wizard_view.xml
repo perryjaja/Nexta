@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Add to res.partner action-->
+    <act_window id="account_financial_report.act_action_open_items_wizard_partner_relation"
+                name="Open Items Partner"
+                res_model="open.items.report.wizard"
+                src_model="res.partner"
+                view_mode="form"
+                context="{
+                    'default_receivable_accounts_only':1,
+                    'default_payable_accounts_only':1,
+                    }"
+                groups="custom_pnt.group_extracto_cliente_report"
+                key2="client_action_multi"
+                target="new" />
+
+</odoo>

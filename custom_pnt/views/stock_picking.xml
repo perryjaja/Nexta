@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- FORM Stock Picking Order -->
+    <record model="ir.ui.view" id="view_lorente_picking_form">
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
+        <field name="priority" eval="9998"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="pnt_tipo_interno" invisible="1"/>
+                <field name="sale_id" invisible="1"/>
+                <field name="picking_type_code" invisible="1"/>
+                <field name="pnt_check_deposito"
+                       attrs="{'invisible': ['|', ('picking_type_code', '!=', 'outgoing'), ('sale_id', '=', False)]}"/>
+                <field name="pnt_todo_plata"
+                       attrs="{'invisible': ['|', ('picking_type_code', '!=', 'outgoing'), ('sale_id', '=', False)]}" />
+                <field name="line_total_qty"
+                       attrs="{'invisible': [('pnt_tipo_interno', '=', False)]}" />
+            </xpath>
+
+            <xpath expr="//field[@name='move_ids_without_package']" position="before">
+                <group attrs="{'invisible': [('state', '=', 'done')]}">
+                    <widget name="widget_pnt_internal_picking_barcode_scanner"
+                            attrs="{'invisible': [('pnt_tipo_interno', '=', False)]}"/>
+                </group>
+            </xpath>
+
+            <button name="do_print_picking" position="replace"/>
+            <button name="%(stock.action_report_delivery)d" position="replace"/>
+
+            <xpath expr="//field[@name='move_ids_without_package']/tree" position="replace">
+                <tree string="Stock Moves" editable="top"
+                      decoration-danger="product_uom_qty &gt; reserved_availability">
+                    <field name="sequence" widget="handle" />
+                    <field name="name" invisible="1"/>
+                    <field name="date_expected" invisible="1"/>
+                    <field name="state" invisible="1" readonly="0"/>
+                    <field name="picking_type_id" invisible="1"/>
+                    <field name="location_id" invisible="1"/>
+                    <field name="location_dest_id" invisible="1"/>
+                    <field name="scrapped" invisible="1"/>
+                    <field name="picking_code" invisible="1"/>
+                    <field name="product_type" invisible="1"/>
+                    <field name="show_details_visible" invisible="1"/>
+                    <field name="show_reserved_availability" invisible="1"/>
+                    <field name="show_operations" invisible="1" readonly="1"/>
+                    <field name="additional" invisible="1"/>
+                    <field name="has_move_lines" invisible="1"/>
+                    <field name="is_locked" invisible="1"/>
+                    <field name="product_id" required="1" attrs="{'readonly': ['|', '&amp;', ('state', '!=', 'draft'), ('additional', '=', False), ('has_move_lines', '=', True)]}"/>
+                    <field name="is_initial_demand_editable" invisible="1"/>
+                    <field name="is_quantity_done_editable" invisible="1"/>
+                    <field name="product_uom_qty" string="Demanda Inicial" sum="Total"
+                           attrs="{'column_invisible': ['&amp;',('parent.immediate_transfer', '=', True), ('parent.is_locked', '=', True)], 'readonly': [('is_initial_demand_editable', '=', False)]}"/>
+                    <field name="reserved_availability" string="Reserved" attrs="{'column_invisible': (['|','|', ('parent.state','=', 'done'), ('parent.picking_type_code', '=', 'incoming'),'&amp;',('parent.immediate_transfer', '=', True), ('parent.is_locked', '=', True)])}"/>
+                    <field name="quantity_done" string="Hecho" sum="Total"
+                           attrs="{'readonly': [('is_quantity_done_editable', '=', False)]}"/>
+                    <field name="pnt_cantidad_recibida"
+                           attrs="{'readonly': True,'column_invisible':[('parent.picking_type_code','!=','incoming')]}"
+                           force_save="1"/>
+                    <field name="pnt_quilates"
+                           attrs="{'column_invisible':[('parent.picking_type_code','!=','incoming')]}"/>
+                    <field name="pnt_peso_neto_global"
+                           attrs="{'readonly': True, 'column_invisible':[('parent.picking_type_code','!=','incoming')]}"
+                           force_save="1"/>
+                    <field name="pnt_peso_neto_global_compute"
+                           attrs="{'column_invisible':[('parent.picking_type_code','!=','incoming')]}"/>
+                    <field name="pnt_peso_neto" force_save="1"
+                           attrs="{'column_invisible':[('parent.picking_type_code','!=','incoming')]}"/>
+                    <field name="pnt_merma"
+                           attrs="{'column_invisible':[('parent.picking_type_code','!=','incoming')]}"/>
+                    <field name="pnt_discount"
+                           attrs="{'column_invisible':[('parent.picking_type_code','!=','incoming')]}"/>
+                    <field name="pnt_update"
+                           attrs="{'column_invisible':[('parent.picking_type_code','!=','incoming')]}"/>
+                    <field name="pnt_hechura_compra"
+                           attrs="{'column_invisible':[('parent.picking_type_code','!=','incoming')]}"/>
+                    <field name="pnt_purchase_unit"
+                           attrs="{'column_invisible':[('parent.picking_type_code','!=','incoming')]}"/>
+                    <field name="pnt_sale_price"
+                           attrs="{'column_invisible':[('parent.picking_type_code','!=','incoming')]}"/>
+                    <field name="product_uom" attrs="{'readonly': [('state', '!=', 'draft'), ('additional', '=', False)]}" options="{'no_open': True, 'no_create': True}" string="Unit of Measure" groups="uom.group_uom"/>
+                    <button name="action_show_details" string="Register lots, packs, location" type="object" icon="fa-list" attrs="{'invisible': [('show_details_visible', '=', False)]}" options="{&quot;warn&quot;: true}"/>
+                </tree>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_lorente_security_picking_form">
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="custom_pnt.view_lorente_picking_form"/>
+        <field name="priority" eval="9999"/>
+        <field name="groups_id"
+               eval="[(4, ref('custom_pnt.group_pnt_recepcion_albaranes'))]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pnt_cantidad_recibida']"
+                   position="replace">
+                <field name="pnt_cantidad_recibida"
+                       attrs="{'readonly': False,'column_invisible':[('parent.picking_type_code','!=','incoming')]}"
+                       force_save="1"/>
+            </xpath>
+            <xpath expr="//field[@name='pnt_peso_neto_global']"
+                   position="replace">
+                <field name="pnt_peso_neto_global"
+                       attrs="{'readonly': False, 'column_invisible':[('parent.picking_type_code','!=','incoming')]}"
+                       force_save="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_stock_move_line_operation_tree">
+        <field name="name">pnt.stock.move.line.operation.tree</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id"
+               ref="stock.view_stock_move_line_operation_tree"/>
+        <field name="priority" eval="9998"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lot_name']" position="replace"/>
+            <xpath expr="//field[@name='qty_done']" position="replace"/>
+            <xpath expr="//field[@name='lot_id']"
+                   position="before">
+                <field name="qty_done" sum="Total"/>
+                <field name="pnt_sale_price"/>
+                <field name="pnt_peso_neto_global_compute" invisible="1"/>
+                <field name="pnt_peso_neto" sum="pnt_peso_neto"  force_save="1"/>
+                <field name="lot_name"
+                       force_save="1"
+                       readonly="1"
+                       invisible="not context.get('show_lots_text')"/>
+            </xpath>
+            <xpath expr="//field[@name='lot_id']" position="replace">
+                <field name="picking_type_code" invisible="1"/>
+                <field name="lot_id"
+                       attrs="{'readonly': [('picking_type_code', '!=', 'internal')]}"
+                       invisible="not context.get('show_lots_m2o')"
+                       domain="[('product_id', '=', parent.product_id)]"
+                       groups="stock.group_production_lot"
+                       context="{'default_product_id': parent.product_id, 'active_picking_id': picking_id}"/>
+            </xpath>
+            <xpath expr="//field[@name='location_id']" position="replace">
+                <field name="location_id" readonly="1" force_save="1"
+                       invisible="not context.get('show_source_location')"
+                       domain="[('id', 'child_of', parent.location_id)]"
+                       groups="stock.group_stock_multi_locations"/>
+            </xpath>
+            <xpath expr="//field[@name='location_dest_id']" position="replace">
+                <field name="location_dest_id" readonly="1" force_save="1"
+                       invisible="not context.get('show_destination_location')"
+                       domain="[('id', 'child_of', parent.location_dest_id)]"
+                       groups="stock.group_stock_multi_locations"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="pnt_view_stock_return_picking_form_inherit" model="ir.ui.view">
+        <field name="name">pnt.stock.return.picking.form</field>
+        <field name="inherit_id" ref="stock.view_stock_return_picking_form"/>
+        <field name="model">stock.return.picking</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_return_moves']/tree/field[@name='product_id']"
+                   position="after">
+                <field name="pnt_sale_price" readonly="1" force_save="1"/>
+                <field name="pnt_peso_neto" readonly="1" force_save="1"/>
+                <field name="pnt_lot_id" readonly="1" force_save="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_move_picking_chatter_form" model="ir.ui.view">
+        <field name="name">stock.move.picking.chatter.form</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_picking_form"/>
+        <field eval="1" name="priority"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="pnt_cantidad_recibida" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="pnt_view_stock_move_chatter_form_inherit" model="ir.ui.view">
+        <field name="name">pnt.stock.move.chatter.form.inherit</field>
+        <field name="inherit_id" ref="stock.view_move_form"/>
+        <field name="model">stock.move</field>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="pnt_view_view_move_line_partner_tree_inherit" model="ir.ui.view">
+        <field name="name">pnt.view.view.move.line.partner.tree.inherit</field>
+        <field name="inherit_id" ref="stock.view_move_line_tree"/>
+        <field name="model">stock.move.line</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="before">
+                <field name="pnt_partner_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="pnt_view_stock_move_order_form_inherit" model="ir.ui.view">
+        <field name="inherit_id" ref="stock.view_stock_move_operations"/>
+        <field name="model">stock.move</field>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </xpath>
+            <xpath expr="//group[1]" position="inside">
+                <group>
+                    <field name="impresora"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

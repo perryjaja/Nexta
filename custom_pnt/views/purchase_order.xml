@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- FORM Purchase Order -->
+    <record model="ir.ui.view" id="purchase_order_form">
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="priority" eval="9999"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="after">
+                <field name="pnt_aleacion"/>
+                <field name="pnt_observations"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

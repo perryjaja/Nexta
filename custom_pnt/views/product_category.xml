@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- FORM Product Template -->
+    <record model="ir.ui.view" id="product_category_form_view">
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="priority" eval="9999"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='parent_id']/parent::group" position="after">
+                <group colspan="2">
+                    <group>
+                        <field name="pnt_sale_unit" attrs="{'readonly':[('parent_id','!=',False)]}" force_save="1"/>
+                        <field name="pnt_escandallo" attrs="{'invisible':[('parent_id','!=',False)]}"/>
+                        <field name="pnt_cambio_escandallo" invisible="1"/>
+                        <button type="object" name="open_escandallo_wizard"
+                                class="btn-primary"
+                                attrs="{'invisible': [('pnt_cambio_escandallo', '=', False)]}"
+                                string="Actualizar escandallos"/>
+                    </group>
+                    <group>
+                        <field name="pnt_no_compute_sale_price"/>
+                        <field name="pnt_peso_neto_obligatorio"/>
+                    </group>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

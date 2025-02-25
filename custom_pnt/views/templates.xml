@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+      <template id="pnt_internal_picking_focus_assets_backend" name="pnt_internal_picking_focus_assets_backend"
+                inherit_id="web.assets_backend">
+          <xpath expr="." position="inside">
+              <script type="text/javascript"
+                      src="/custom_pnt/static/src/js/internal_picking_barcodes.js"/>
+          </xpath>
+      </template>
+
+</odoo>

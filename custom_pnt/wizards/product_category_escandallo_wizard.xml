@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="pnt_view_category_escandallo_wizard" model="ir.ui.view">
+        <field name="model">pnt.category.escandallo.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <span style="font-size:14px;">Vas a actualizar los escandallos de todos los
+                        productos de la familia seleccionada, es correcto?
+                    </span>
+                    <separator/>
+                </group>
+                <footer>
+                    <button string="Confirmar" type="object"
+                            name="actualiza_escandallo" class="btn-primary"/>
+                    <button string="Cancelar" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

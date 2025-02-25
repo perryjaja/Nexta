@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu proveedores -->
+    <menuitem id="account.menu_finance_payables" name="Proveedores"
+              groups="account.group_account_manager"
+              parent="account.menu_finance" sequence="3"/>
+
+    <!-- Menu Gastos -->
+    <menuitem id="account_payment_order.payment_root" name="Pagos"
+              groups="account.group_account_manager"
+              parent="account.menu_finance" sequence="7"/>
+
+    <!-- Menu Devoluciones de cobros en clientes-->
+    <menuitem id="account_payment_return.payment_return_menu"
+              name="Customer Payment Returns"
+              parent="account.menu_finance_receivables"
+              groups="account.group_account_manager"
+              action="account_payment_return.payment_return_action"
+              sequence="20"/>
+
+     <!-- Menu pagos en clientes-->
+    <menuitem action="account.action_account_payments"
+              groups="account.group_account_manager"
+              id="account.menu_action_account_payments_receivable"
+              parent="account.menu_finance_receivables" sequence="15"/>
+</odoo>

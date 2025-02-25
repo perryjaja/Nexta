@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- FORM Res Company -->
+    <record model="ir.ui.view" id="view_company_form">
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook" position="inside">
+                <page name="base_metal_market" string="Base Metal Market">
+                    <group colspan="2">
+                        <group>
+                            <field name="pnt_base_metal_market_ids">
+                                <tree create="true" editable="bottom">
+                                    <field name="pnt_metal_id"/>
+                                    <field name="pnt_base_metal" string="Base Metal (€/g)"/>
+                                    <button name="btn_update_price"
+                                            class="oe_highlight"
+                                            type="object"
+                                            string="Update Price"
+                                    />
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

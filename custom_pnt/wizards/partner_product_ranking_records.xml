@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="pnt_partner_product_ranking_records_search" model="ir.ui.view">
+        <field name="name">pnt.partner.product.ranking.records.search</field>
+        <field name="model">pnt.partner.product.ranking.records</field>
+        <field name="arch" type="xml">
+            <search string="Ranking">
+                <field name="producto" string="Product" filter_domain="['|', '|', '|', ('ref_interna', 'ilike', self), ('producto.default_code', 'ilike', self),('producto', 'ilike', self)]"/>
+                <field name="familia" filter_domain="[('familia', 'child_of', raw_value)]"/>
+                <field name="pnt_detalle" filter_domain="[('pnt_detalle', 'ilike', raw_value)]"/>
+                <separator/>
+                <group expand="0" string="Agrupar">
+                    <filter string="Familia" name="familia" domain="[]" context="{'group_by':'familia'}"/>
+                    <filter name="pnt_design" string="Diseño" domain="[]" context="{'group_by':'pnt_design'}"/>
+                    <filter name="pnt_subdesign" string="Subdiseño" domain="[]" context="{'group_by':'pnt_subdesign'}"/>
+                    <filter name="pnt_format" string="Formato" domain="[]" context="{'group_by':'pnt_format'}"/>
+                    <filter name="pnt_metal" string="Metal" domain="[]" context="{'group_by':'pnt_metal'}"/>
+                    <filter name="pnt_stones" string="Piedras" domain="[]" context="{'group_by':'pnt_stones'}"/>
+                    <filter name="pnt_density" string="Densidad" domain="[]" context="{'group_by':'pnt_density'}"/>
+                    <filter name="pnt_tipo_metal" string="Tipo de metal" domain="[]" context="{'group_by':'pnt_tipo_metal'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="pnt_partner_product_ranking_records_tree">
+        <field name="name">pnt.partner.product.ranking.records.tree</field>
+        <field name="model">pnt.partner.product.ranking.records</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="false" edit="true" default_order="cantidades desc,ref_interna asc">
+                <field readonly="1" name="ref_interna"/>
+                <field readonly="1" name="producto"/>
+                <field readonly="1" name="familia" invisible="1"/>
+                <field readonly="1" name="cantidades"/>
+                 <field readonly="1" name="importe" sum="Total"/>
+                <field readonly="1" name="pnt_detalle" invisible="1"/>
+                <field readonly="1" name="pnt_design" invisible="1"/>
+                <field readonly="1" name="pnt_subdesign" invisible="1"/>
+                <field readonly="1" name="pnt_format" invisible="1"/>
+                <field readonly="1" name="pnt_metal" invisible="1"/>
+                <field readonly="1" name="pnt_stones" invisible="1"/>
+                <field readonly="1" name="pnt_density" invisible="1"/>
+                <field readonly="1" name="pnt_tipo_metal" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_partner_product_ranking_wizard">
+        <field name="name">Ranking</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.partner.product.ranking.records</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="pnt_partner_product_ranking_records_tree"/>
+        <field name="search_view_id" ref="pnt_partner_product_ranking_records_search"/>
+    </record>
+
+    <record id="pnt_action_server_partner_product_ranking_wizard" model="ir.actions.server">
+        <field name="name">Ranking</field>
+        <field name="type">ir.actions.server</field>
+        <field name="binding_model_id" ref="model_pnt_partner_product_ranking_records"/>
+        <field name="model_id" ref="model_pnt_partner_product_ranking_records"/>
+        <field name="state">code</field>
+        <field name="code">action = model.action_create_view_info()</field>
+    </record>
+
+</odoo>

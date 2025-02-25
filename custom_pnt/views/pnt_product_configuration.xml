@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- FORM Metal -->
+    <record model="ir.ui.view" id="pnt_view_form_metal">
+        <field name="model">pnt.metal</field>
+        <field name="name">pnt.view.form.metal</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header></header>
+                <sheet>
+                    <group cols="2">
+                        <group>
+                            <field name="name" string="Metal"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+    <!-- TREE Metal -->
+    <record model="ir.ui.view" id="pnt_view_tree_metal">
+        <field name="model">pnt.metal</field>
+        <field name="name">pnt.view.tree.metal</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Metal"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM Piedras -->
+    <record model="ir.ui.view" id="pnt_view_form_stones">
+        <field name="model">pnt.stones</field>
+        <field name="name">pnt.view.form.stones</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header></header>
+                <sheet>
+                    <group cols="2">
+                        <group>
+                            <field name="name" string="Stones"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+    <!-- TREE Piedras -->
+    <record model="ir.ui.view" id="pnt_view_tree_stones">
+        <field name="model">pnt.stones</field>
+        <field name="name">pnt.view.tree.stones</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Stones"/>
+            </tree>
+        </field>
+    </record>
+
+        <!-- FORM Diseño -->
+    <record model="ir.ui.view" id="pnt_view_form_design">
+        <field name="model">pnt.design</field>
+        <field name="name">pnt.view.form.design</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header></header>
+                <sheet>
+                    <group cols="2">
+                        <group>
+                            <field name="pnt_product_category_id"/>
+                            <field name="name" string="Design"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+    <!-- TREE Diseño -->
+    <record model="ir.ui.view" id="pnt_view_tree_design">
+        <field name="model">pnt.design</field>
+        <field name="name">pnt.view.tree.design</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="pnt_product_category_id"/>
+                <field name="name" string="Design"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM Subdiseño -->
+    <record model="ir.ui.view" id="pnt_view_form_subdesign">
+        <field name="model">pnt.subdesign</field>
+        <field name="name">pnt.view.form.subdesign</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header></header>
+                <sheet>
+                    <group cols="2">
+                        <group>
+                            <field name="pnt_product_category_id"/>
+                            <field name="name" string="Subdesign"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+    <!-- TREE Subdiseño -->
+    <record model="ir.ui.view" id="pnt_view_tree_subdesign">
+        <field name="model">pnt.subdesign</field>
+        <field name="name">pnt.view.tree.subdesign</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="pnt_product_category_id"/>
+                <field name="name" string="Subdesign"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM Formato -->
+    <record model="ir.ui.view" id="pnt_view_form_format">
+        <field name="model">pnt.format</field>
+        <field name="name">pnt.view.form.format</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header></header>
+                <sheet>
+                    <group cols="2">
+                        <group>
+                            <field name="pnt_product_category_id"/>
+                            <field name="name" string="Format"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- TREE Formato -->
+    <record model="ir.ui.view" id="pnt_view_tree_format">
+        <field name="model">pnt.format</field>
+        <field name="name">pnt.view.tree.format</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="pnt_product_category_id"/>
+                <field name="name" string="Format"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM Densidad -->
+    <record model="ir.ui.view" id="pnt_view_form_density">
+        <field name="model">pnt.density</field>
+        <field name="name">pnt.view.form.density</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header></header>
+                <sheet>
+                    <group cols="2">
+                        <group>
+                            <field name="pnt_product_category_id"/>
+                            <field name="name" string="Density"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+    <!-- TREE Densidad -->
+    <record model="ir.ui.view" id="pnt_view_tree_density">
+        <field name="model">pnt.density</field>
+        <field name="name">pnt.view.tree.density</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="pnt_product_category_id"/>
+                <field name="name" string="Density"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- ACCIONES -->
+    <record id="action_pnt_metal" model="ir.actions.act_window">
+        <field name="name">Metal</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.metal</field>
+        <field name="view_id" ref="pnt_view_tree_metal"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+    </record>
+
+    <record id="action_pnt_stones" model="ir.actions.act_window">
+        <field name="name">Stones</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.stones</field>
+        <field name="view_id" ref="pnt_view_tree_stones"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+    </record>
+
+    <record id="action_pnt_design" model="ir.actions.act_window">
+        <field name="name">Design</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.design</field>
+        <field name="view_id" ref="pnt_view_tree_design"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+    </record>
+
+    <record id="action_pnt_subdesign" model="ir.actions.act_window">
+        <field name="name">Subdesign</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.subdesign</field>
+        <field name="view_id" ref="pnt_view_tree_subdesign"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+    </record>
+
+    <record id="action_pnt_density" model="ir.actions.act_window">
+        <field name="name">Density</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.density</field>
+        <field name="view_id" ref="pnt_view_tree_density"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+    </record>
+
+    <record id="action_pnt_format" model="ir.actions.act_window">
+        <field name="name">Format</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.format</field>
+        <field name="view_id" ref="pnt_view_tree_format"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+    </record>
+
+    <!-- MENU -->
+    <menuitem id="menu_pnt_metal"
+              name="Metal"
+              parent="purchase.menu_product_in_config_purchase" sequence="10"
+              action="action_pnt_metal"/>
+
+    <menuitem id="menu_pnt_stones"
+              name="Stones"
+              parent="purchase.menu_product_in_config_purchase" sequence="15"
+              action="action_pnt_stones"/>
+
+    <menuitem id="menu_pnt_design"
+              name="Design"
+              parent="purchase.menu_product_in_config_purchase" sequence="20"
+              action="action_pnt_design"/>
+
+    <menuitem id="menu_pnt_subdesign"
+              name="Subdesign"
+              parent="purchase.menu_product_in_config_purchase" sequence="25"
+              action="action_pnt_subdesign"/>
+
+    <menuitem id="menu_pnt_density"
+              name="Density"
+              parent="purchase.menu_product_in_config_purchase" sequence="30"
+              action="action_pnt_density"/>
+
+    <menuitem id="menu_pnt_format"
+              name="Format"
+              parent="purchase.menu_product_in_config_purchase" sequence="35"
+              action="action_pnt_format"/>
+</odoo>
