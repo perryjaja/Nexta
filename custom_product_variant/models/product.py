@@ -262,16 +262,16 @@ class ProductTemplate(models.Model):
                 return precio_venta
         return price
 
-    @api.depends('pnt_design', 'pnt_subdesign', 'pnt_format', 'pnt_metal', 'pnt_stones')
-    def _compute_pnt_description_intern(self):
-        pnt_description_intern = ''
-        for record in self:
-            pnt_description_intern += record.pnt_design.name + " " if record.pnt_design else ''
-            pnt_description_intern += record.pnt_subdesign.name + " " if record.pnt_subdesign else ''
-            pnt_description_intern += record.pnt_format.name + " " if record.pnt_format else ''
-            pnt_description_intern += record.pnt_metal.name + " " if record.pnt_metal else ''
-            pnt_description_intern += record.pnt_stones.name + " " if record.pnt_stones else ''
-            record.pnt_description_intern = pnt_description_intern
+    # @api.depends('pnt_design', 'pnt_subdesign', 'pnt_format', 'pnt_metal', 'pnt_stones')
+    # def _compute_pnt_description_intern(self):
+    #     pnt_description_intern = ''
+    #     for record in self:
+    #         pnt_description_intern += record.pnt_design.name + " " if record.pnt_design else ''
+    #         pnt_description_intern += record.pnt_subdesign.name + " " if record.pnt_subdesign else ''
+    #         pnt_description_intern += record.pnt_format.name + " " if record.pnt_format else ''
+    #         pnt_description_intern += record.pnt_metal.name + " " if record.pnt_metal else ''
+    #         pnt_description_intern += record.pnt_stones.name + " " if record.pnt_stones else ''
+    #         record.pnt_description_intern = pnt_description_intern
 
     @api.onchange('seller_ids')
     def _pnt_onchange_seller_ids(self):
@@ -603,16 +603,16 @@ class ProductProduct(models.Model):
         if pnt_proveedor_activo:
             self.standard_price = pnt_proveedor_activo[0].price
 
-    @api.depends('pnt_design', 'pnt_subdesign', 'pnt_format', 'pnt_metal', 'pnt_stones')
-    def _compute_pnt_description_intern(self):
-        pnt_description_intern = ''
-        for record in self:
-            pnt_description_intern += record.pnt_design.name + " " if record.pnt_design else ''
-            pnt_description_intern += record.pnt_subdesign.name + " " if record.pnt_subdesign else ''
-            pnt_description_intern += record.pnt_format.name + " " if record.pnt_format else ''
-            pnt_description_intern += record.pnt_metal.name + " " if record.pnt_metal else ''
-            pnt_description_intern += record.pnt_stones.name + " " if record.pnt_stones else ''
-            record.pnt_description_intern = pnt_description_intern
+    # @api.depends('pnt_design', 'pnt_subdesign', 'pnt_format', 'pnt_metal', 'pnt_stones')
+    # def _compute_pnt_description_intern(self):
+    #     pnt_description_intern = ''
+    #     for record in self:
+    #         pnt_description_intern += record.pnt_design.name + " " if record.pnt_design else ''
+    #         pnt_description_intern += record.pnt_subdesign.name + " " if record.pnt_subdesign else ''
+    #         pnt_description_intern += record.pnt_format.name + " " if record.pnt_format else ''
+    #         pnt_description_intern += record.pnt_metal.name + " " if record.pnt_metal else ''
+    #         pnt_description_intern += record.pnt_stones.name + " " if record.pnt_stones else ''
+    #         record.pnt_description_intern = pnt_description_intern
 
     @api.onchange('seller_ids')
     def _pnt_onchange_seller_ids(self):

@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record id="com_res_partner_filter_view_custom" model="ir.ui.view">
+            <field name="name">com.res.partner.filter.view.custom</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field string="Comercial" name="comercial" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
