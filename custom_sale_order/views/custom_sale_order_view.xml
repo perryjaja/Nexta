@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record id="sale_sale_order_tree_custom" model="ir.ui.view">
+            <field name="name">sale.sale.order.tree.custom</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_order']" position="after">
+                    <field name="transporter_num" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
