@@ -1,0 +1,13 @@
+<?xml version = "1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_repair_order_form_custom" inherit_id="repair.report_repairorder">
+
+        <xpath expr="//div[@id='informations']//div[2]" position="inside">
+            <p t-if="o.num_prod" class="m-0">
+                <strong>Su nº pedido :</strong>
+                <span t-field="o.num_prod"/>
+            </p>
+        </xpath>
+
+    </template>
+</odoo>

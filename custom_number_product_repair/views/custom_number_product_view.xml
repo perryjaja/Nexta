@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+
+<!--        Debes cambiar la localizacion y ponerlo debajo de referencia   -->
+
+        <record id="repair_view_repair_order_form_custom" model="ir.ui.view">
+            <field name="name">repair.view.repair.order.form</field>
+            <field name="model">repair.order</field>
+            <field name="inherit_id" ref="repair.view_repair_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group//field[@name='tag_ids']" position="after">
+                    <field string="Su nº pedido" name="num_prod" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
