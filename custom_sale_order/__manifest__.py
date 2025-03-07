@@ -8,8 +8,8 @@
     'category': 'Product Management',
     'author': 'Alex Adalid',
     'description': 'Nuevos campos',
-    'depends': ['product'],
-    'data': ['views/product_densidad_view.xml'],
+    'depends': ['sale','account'],
+    'data': ['views/custom_sale_order_view.xml'],
     'installable': True,
     'license': 'LGPL-3',
 }

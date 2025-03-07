@@ -1,12 +1,35 @@
 <odoo>
     <data>
+        <record id="sale_sale_order_form_custom" model="ir.ui.view">
+            <field name="name">sale.sale.order.form.custom</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='source_id']" position="after">
+                    <field name="transporter_num_sale" />
+                </xpath>
+                <xpath expr="//tree//field[@name='product_template_id']" position="after" >
+                    <field name="transporter_num_sale_line" column_invisible="0"/>
+                </xpath>
+            </field>
+        </record>
         <record id="sale_sale_order_tree_custom" model="ir.ui.view">
             <field name="name">sale.sale.order.tree.custom</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.sale_order_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='date_order']" position="after">
-                    <field name="transporter_num" />
+                    <field name="transporter_num_sale"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="account_view_move_form_custom" model="ir.ui.view">
+            <field name="name">account.view.move.form.custom</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='account_id']" position="after">
+                    <field name="transporter_num_bill" />
                 </xpath>
             </field>
         </record>
